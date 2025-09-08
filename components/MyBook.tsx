@@ -38,16 +38,9 @@ const MyBook = () => {
               </TouchableOpacity>
 
               {/* Wishlist Toggle Button */}
-              <TouchableOpacity
-                onPress={() => toggleWishlist(item)}
-                className={`py-2 mt-2 rounded-lg items-center ${
-                    isInWishlist(item) ? "bg-red-200" : "bg-red-100"
-                }`}
-                >
-                <Text className="text-red-600">
-                    {isInWishlist(item) ? "💔 Remove from Wishlist" : "❤️ Add to Wishlist"}
-                </Text>
-                </TouchableOpacity>
+              <TouchableOpacity onPress={() => toggleWishlist(item)}>
+                <Text>{isInWishlist(item) ? "💔 Remove from Wishlist" : "❤️ Add to Wishlist"}</Text>
+              </TouchableOpacity>
             </View>
           );
         }}

@@ -12,13 +12,36 @@ import './global.css';
 import AppNavigator from "./components/AppNavigator";
 import { WishlistProvider } from "./context/WishlistContext";
 import { NotificationProvider } from "./context/NotificationContext";
+import * as Notifications from "expo-notifications";
 const LOGIN_TOKEN_KEY = "user_token";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true, 
+    shouldPlaySound: true,  
+    shouldSetBadge: false,  
+    shouldShowBanner: true,
+    shouldShowList: true,
+  }),
+});
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [hasSeenWelcome, setHasSeenWelcome] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+  useEffect(() => {
+    // Ask user for permission to show notifications
+    const requestPermission = async () => {
+      const { status } = await Notifications.requestPermissionsAsync();
+      if (status !== "granted") {
+        alert("Permission for notifications not granted!");
+      }
+    };
+    requestPermission();
+  }, []);
 
   // Check token when app loads
   useEffect(() => {
