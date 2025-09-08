@@ -6,12 +6,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Header = () => {
   const navigation = useNavigation();
 
+  // Example counts (these can come from state, props, or Redux)
+  const notificationCount = 3;
+  const wishlistCount = 5;
+  const cartCount = 2;
+
   return (
     <SafeAreaView>
       <View className="flex-row items-center justify-between p-4 bg-white shadow">
         <Text className="text-xl font-bold text-orange-700">BookMarket</Text>
 
         <View className="flex-row items-center space-x-3">
+          {/* Search Bar */}
           <TextInput
             placeholder="Search books, authors, genres..."
             className="bg-gray-100 px-3 py-2 rounded-full w-48"
@@ -19,26 +25,47 @@ const Header = () => {
 
           {/* Notification Button */}
           <TouchableOpacity
-            className="p-2"
+            className="p-2 relative"
             onPress={() => navigation.navigate("Notification" as never)}
           >
             <Text>🔔</Text>
+            {notificationCount > 0 && (
+              <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
+                <Text className="text-white text-xs font-bold">
+                  {notificationCount}
+                </Text>
+              </View>
+            )}
           </TouchableOpacity>
 
           {/* Wishlist Button */}
           <TouchableOpacity
-            className="p-2"
+            className="p-2 relative"
             onPress={() => navigation.navigate("Wishlist" as never)}
           >
             <Text>❤️</Text>
+            {wishlistCount > 0 && (
+              <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
+                <Text className="text-white text-xs font-bold">
+                  {wishlistCount}
+                </Text>
+              </View>
+            )}
           </TouchableOpacity>
 
           {/* Cart Button */}
           <TouchableOpacity
-            className="p-2"
+            className="p-2 relative"
             onPress={() => navigation.navigate("Cart" as never)}
           >
             <Text>🛒</Text>
+            {cartCount > 0 && (
+              <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
+                <Text className="text-white text-xs font-bold">
+                  {cartCount}
+                </Text>
+              </View>
+            )}
           </TouchableOpacity>
         </View>
       </View>

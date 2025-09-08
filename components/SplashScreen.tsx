@@ -1,40 +1,50 @@
-// SplashScreen.tsx
 import React, { useEffect } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "react-native";
 
-const SplashScreen = ({ navigation }: any) => {
+export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace("Main"); // go to main screen
-    }, 2000); // 2 seconds splash
+      onFinish(); 
+    }, 1500); // 1.5 seconds
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../assets/logo.png")}
-        style={{ width: 150, height: 150 }}
-      />
-      <Text style={styles.text}>BookMarket</Text>
-    </View>
+    <ImageBackground
+      source={{ uri: "https://images.unsplash.com/photo-1512820790803-83ca734da794" }} // books background
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.title}>📚 MyBookApp</Text>
+        <ActivityIndicator size="large" color="#FFA500" style={styles.loader} />
+      </View>
+    </ImageBackground>
   );
-};
-
-export default SplashScreen;
+}
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
   },
-  text: {
-    fontSize: 24,
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)", // semi-transparent overlay
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  title: {
+    fontSize: 36,
     fontWeight: "bold",
+    color: "#fff",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  loader: {
     marginTop: 20,
-    color: "#f97316",
   },
 });

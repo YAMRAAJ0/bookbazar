@@ -1,16 +1,65 @@
-// App.tsx
 import { StatusBar } from "expo-status-bar";
-import "./global.css";
+import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabs from "components/BottomTabs";
 import Header from "components/Header";
+import LoginScreen from "components/LoginScreen";
+import RegisterScreen from "components/RegisterScreen";
+import WelcomeConsentScreen from "components/welcome-consent";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import SplashScreen from "components/SplashScreen";
+import './global.css';
+
+const LOGIN_TOKEN_KEY = "user_token";
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+  const [hasSeenWelcome, setHasSeenWelcome] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check token when app loads
+  useEffect(() => {
+    const checkLogin = async () => {
+      const token = await AsyncStorage.getItem(LOGIN_TOKEN_KEY);
+      if (token) setIsLoggedIn(true);
+    };
+    checkLogin();
+  }, []);
+
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem(LOGIN_TOKEN_KEY);
+    setIsLoggedIn(false);
+  };
+
+  // Show splash first
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
+
   return (
     <>
       <NavigationContainer>
-        <Header />
-        <BottomTabs />
+        {/* Always show Welcome screen first if user hasn't seen it */}
+        {!hasSeenWelcome ? (
+          <WelcomeConsentScreen onContinue={() => setHasSeenWelcome(true)} />
+        ) : !isLoggedIn ? (
+          
+          showRegister ? (
+            <RegisterScreen onRegister={() => setShowRegister(false)} />
+          ) : (
+            <LoginScreen
+              onLogin={() => setIsLoggedIn(true)}
+              onRegisterPage={() => setShowRegister(true)}
+            />
+          )
+        ) : (
+          // Logged in
+          <>
+            <Header />
+            <BottomTabs screenProps={{ onLogout: handleLogout }} />
+          </>
+        )}
       </NavigationContainer>
       <StatusBar style="auto" />
     </>

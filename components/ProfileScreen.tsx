@@ -1,12 +1,8 @@
-import React from "react";
+// ProfileScreen.tsx
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function ProfileScreen({ navigation }: any) {
-  const handleLogout = () => {
-    navigation.replace("Login"); 
-  };
-
+export default function ProfileScreen({ onLogout }: { onLogout: () => void }) {
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="items-center py-16 bg-purple-50">
@@ -43,7 +39,7 @@ export default function ProfileScreen({ navigation }: any) {
 
       <View className="px-6 mt-8">
         <TouchableOpacity
-          onPress={handleLogout}
+          onPress={onLogout} // use callback
           className="bg-red-500 py-3 rounded-xl items-center"
         >
           <Text className="text-white font-semibold text-lg">Log Out</Text>
