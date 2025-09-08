@@ -1,7 +1,7 @@
+// App.tsx
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import BottomTabs from "components/BottomTabs";
 import Header from "components/Header";
 import LoginScreen from "components/LoginScreen";
 import RegisterScreen from "components/RegisterScreen";
@@ -9,7 +9,9 @@ import WelcomeConsentScreen from "components/welcome-consent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SplashScreen from "components/SplashScreen";
 import './global.css';
-
+import AppNavigator from "./components/AppNavigator";
+import { WishlistProvider } from "./context/WishlistContext";
+import { NotificationProvider } from "./context/NotificationContext";
 const LOGIN_TOKEN_KEY = "user_token";
 
 export default function App() {
@@ -39,6 +41,9 @@ export default function App() {
 
   return (
     <>
+     <NotificationProvider>
+      <WishlistProvider>
+     
       <NavigationContainer>
         {!isLoggedIn ? (
           !hasSeenWelcome ? (
@@ -58,10 +63,14 @@ export default function App() {
           // Logged in
           <>
             <Header />
-            <BottomTabs screenProps={{ onLogout: handleLogout }} />
+            <AppNavigator screenProps={{ onLogout: handleLogout }} />
+            
           </>
         )}
       </NavigationContainer>
+      
+      </WishlistProvider>
+      </NotificationProvider>
       <StatusBar style="auto" />
     </>
   );

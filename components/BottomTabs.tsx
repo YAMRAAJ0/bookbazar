@@ -11,6 +11,8 @@ import CartScreen from "./CartScreen";
 import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
 import SellScreen from "./SellScreen"; 
+import BuyPage from "./BuyPage";
+import CheckoutScreen from "./CheckoutScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,6 +23,7 @@ function ProfileStack({ onLogout }: any) {
       <Stack.Screen name="ProfileScreen">
         {(props) => <ProfileScreen {...props} onLogout={onLogout} />}
       </Stack.Screen>
+      <Stack.Screen name="BuyPage" component={BuyPage} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Wishlist" component={WishlistScreen} />
     </Stack.Navigator>
@@ -28,27 +31,30 @@ function ProfileStack({ onLogout }: any) {
 }
 
 
-// Stack for Home (with Notification + Wishlist inside)
 function HomeStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeHero" component={HomeHero} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Wishlist" component={WishlistScreen} />
+      <Stack.Screen name="BuyPage" component={BuyPage} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 }
 
-// Browse, Cart, Profile stacks...
+
 function BrowseStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="BrowseScreen" component={BrowseScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Wishlist" component={WishlistScreen} />
+      <Stack.Screen name="BuyPage" component={BuyPage} />
     </Stack.Navigator>
   );
 }
+
 
 function CartStack() {
   return (
@@ -72,7 +78,7 @@ const TabBarSellButton = ({ children, onPress }: any) => (
   </TouchableOpacity>
 );
 
-export default function BottomTabs({ screenProps }: any) {
+export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -99,6 +105,9 @@ export default function BottomTabs({ screenProps }: any) {
               break;
             case "Profile":
               iconName = focused ? "person" : "person-outline";
+              break;
+            case "buy":
+              iconName = focused ? "book" : "book-outline";
               break;
             default:
               iconName = "ellipse";
@@ -132,7 +141,7 @@ export default function BottomTabs({ screenProps }: any) {
 
       <Tab.Screen name="Cart" component={CartStack} />
       <Tab.Screen name="Profile">
-        {() => <ProfileStack onLogout={screenProps.onLogout} />}
+        {() => <ProfileStack onLogout={onLogout} />}
       </Tab.Screen>
     </Tab.Navigator>
   );

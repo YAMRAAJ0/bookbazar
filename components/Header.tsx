@@ -2,13 +2,15 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useWishlist } from "../context/WishlistContext";
+import { useNotifications } from "../context/NotificationContext";
 
 const Header = () => {
   const navigation = useNavigation();
+  const { wishlist } = useWishlist();
+  const { notifications } = useNotifications();
 
-  // Example counts (these can come from state, props, or Redux)
-  const notificationCount = 3;
-  const wishlistCount = 5;
+  const notificationCount = notifications.length;
   const cartCount = 2;
 
   return (
@@ -44,10 +46,10 @@ const Header = () => {
             onPress={() => navigation.navigate("Wishlist" as never)}
           >
             <Text>❤️</Text>
-            {wishlistCount > 0 && (
+            {wishlist.length > 0 && (
               <View className="absolute -top-1 -right-1 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
                 <Text className="text-white text-xs font-bold">
-                  {wishlistCount}
+                  {wishlist.length}
                 </Text>
               </View>
             )}
