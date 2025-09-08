@@ -40,14 +40,15 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
-        {/* Always show Welcome screen first if user hasn't seen it */}
-        {!hasSeenWelcome ? (
-          <WelcomeConsentScreen onContinue={() => setHasSeenWelcome(true)} />
-        ) : !isLoggedIn ? (
-          
-          showRegister ? (
+        {!isLoggedIn ? (
+          !hasSeenWelcome ? (
+            // Show welcome screen if not seen
+            <WelcomeConsentScreen onContinue={() => setHasSeenWelcome(true)} />
+          ) : showRegister ? (
+            // Show registration if user clicks register
             <RegisterScreen onRegister={() => setShowRegister(false)} />
           ) : (
+            // Show login screen
             <LoginScreen
               onLogin={() => setIsLoggedIn(true)}
               onRegisterPage={() => setShowRegister(true)}
