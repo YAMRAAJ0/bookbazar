@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, TextInput, ScrollView, TouchableOpacity, Image } from "react-native";
 import { books } from "../data/books";
 
@@ -7,8 +6,8 @@ export default function BrowseScreen() {
   return (
     <View className="flex-1 bg-white">
       {/* Header */}
-      <View className="p-4 bg-blue-50">
-        <Text className="text-2xl font-bold text-blue-700">Browse Books</Text>
+      <View className="p-4 bg-orange-50">
+        <Text className="text-2xl font-bold text-orange-700">Browse Books</Text>
         <TextInput
           placeholder="Search books, authors..."
           className="bg-gray-100 mt-3 px-4 py-2 rounded-full"
@@ -25,9 +24,9 @@ export default function BrowseScreen() {
                 {["All", "Fiction", "Non-Fiction", "Romance", "Sci-Fi", "History"].map((cat, idx) => (
                 <TouchableOpacity
                     key={idx}
-                    className="bg-blue-100 px-4 py-2 rounded-full mr-3"
+                    className="bg-orange-100 px-4 py-2 rounded-full mr-3"
                 >
-                    <Text className="text-blue-700 font-medium">{cat}</Text>
+                    <Text className="text-orange-700 font-medium">{cat}</Text>
                 </TouchableOpacity>
                 ))}
             </ScrollView>
@@ -45,9 +44,9 @@ export default function BrowseScreen() {
             <View className="ml-4 flex-1">
               <Text className="text-lg font-bold">{book.title}</Text>
               <Text className="text-gray-600">{book.author}</Text>
-              <Text className="text-blue-700 font-semibold mt-1">{book.price}</Text>
+              <Text className="text-orange-700 font-semibold mt-1">{book.price}</Text>
             </View>
-            <TouchableOpacity className="bg-blue-600 px-3 py-1 rounded-full">
+            <TouchableOpacity className="bg-orange-600 px-3 py-1 rounded-full">
               <Text className="text-white">Add</Text>
             </TouchableOpacity>
           </View>

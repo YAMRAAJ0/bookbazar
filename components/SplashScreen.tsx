@@ -1,3 +1,4 @@
+// SplashScreen.tsx
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "react-native";
 

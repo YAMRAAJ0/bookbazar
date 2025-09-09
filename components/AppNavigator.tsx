@@ -4,12 +4,15 @@ import BottomTabs from "./BottomNavigation/BottomTabs";
 import BuyPage from "./BuyPage";
 import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
-import CartScreen from "./CartScreen";
+import CartScreen from "../pages/CartScreen";
 import CheckoutScreen from "./CheckoutScreen";
 import SellScreen from "./SellBook/SellScreen";
 import AddBook from "./SellBook/AddBook";
 import DonateBook from "./SellBook/DonateBook";
-import ProfileScreen from "./ProfileScreen";
+import ProfileScreen from "../pages/ProfileScreen";
+import SettingsScreen from "./SettingsScreen";
+import HelpCenterScreen from "./HelpCenterScreen";
+import MyOrders from "./MyOrders";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
@@ -26,9 +29,12 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       <Stack.Screen name="Sell" component={SellScreen} />
       <Stack.Screen name="AddBook" component={AddBook} />
       <Stack.Screen name="Donate" component={DonateBook} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Profile">
         {(props) => <ProfileScreen {...props} onLogout={onLogout} />}
       </Stack.Screen>
+      <Stack.Screen name="HelpCenter" component={HelpCenterScreen} />
+      <Stack.Screen name="MyOrders" component={MyOrders} />
     </Stack.Navigator>
   );
 }
