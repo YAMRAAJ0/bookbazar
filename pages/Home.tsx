@@ -15,7 +15,6 @@ const Home = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
- 
         {/* Hero Section */}
       <HomeHero/>
         {/* Stats Section */}
@@ -37,17 +36,13 @@ const Home = () => {
             <Text className="text-gray-600">New Daily</Text>
           </View>
         </View>
-
         {/* Category Chips */}
         <Text className="text-xl font-bold px-4 mt-6 mb-3">
           📚 Category
         </Text>
         <Category/>
-
         {/* Featured Books Slider */}
         <MyBook/>
-        
-       
         {/* Recommended Section */}
      <Recommended/>
       </ScrollView>

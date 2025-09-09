@@ -33,68 +33,79 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
             }}
             >
 
-        {state.routes.map((route, index) => {
-          const { options } = descriptors[route.key];
-          const label = options.tabBarLabel ?? route.name;
-          const isFocused = state.index === index;
+              {state.routes.map((route, index) => {
+                const { options } = descriptors[route.key];
+                const isFocused = state.index === index; // <-- declare first
 
-          const onPress = () => {
-            const event = navigation.emit({ type: "tabPress", target: route.key });
-            if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
-            }
-          };
+                const onPress = () => {
+                  const event = navigation.emit({
+                    type: "tabPress",
+                    target: route.key,
+                    canPreventDefault: true, // required by TypeScript
+                  });
 
-          // Floating middle button
-          if (route.name === "Sell") {
-            return (
-              <TouchableOpacity
-                key={route.name}
-                onPress={onPress}
-                style={{
-                  top: -30, 
-                  width: 70,
-                  height: 70,
-                  borderRadius: 35,
-                  backgroundColor: "#c2410c",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  shadowColor: "#000",
-                  shadowOpacity: 0.3,
-                  shadowRadius: 5,
-                  shadowOffset: { width: 0, height: 3 },
-                  elevation: 6, 
-                }}
-              >
-                <Ionicons name="add" size={32} color="white" />
-              </TouchableOpacity>
-            );
-          }
+                  if (!isFocused && !event.defaultPrevented) {
+                    navigation.navigate(route.name);
+                  }
+                };
 
-          // Regular tab icons
-          let iconName: keyof typeof Ionicons.glyphMap = "ellipse";
-          if (route.name === "Home") iconName = "location-outline";
-          if (route.name === "Browse") iconName = "search-outline";
-          if (route.name === "Cart") iconName = "chatbubble-outline";
-          if (route.name === "Profile") iconName = "settings-outline";
+                const label =
+                  typeof options.tabBarLabel === "function"
+                    ? options.tabBarLabel({
+                        focused: isFocused, // use after declaration
+                        color: isFocused ? "#c2410c" : "black",
+                        position: "below-icon",
+                        children: route.name,
+                      })
+                    : options.tabBarLabel ?? route.name;
 
-          return (
-            <TouchableOpacity
-              key={route.name}
-              onPress={onPress}
-              style={{ alignItems: "center", flex: 1 }}
-            >
-              <Ionicons
-                name={iconName}
-                size={24}
-                color={isFocused ? "#c2410c" : "black"}
-              />
-              <Text style={{ color: isFocused ? "#c2410c" : "black", fontSize: 12 }}>
-                {label}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+                // Floating middle button
+                if (route.name === "Sell") {
+                  return (
+                    <TouchableOpacity
+                      key={route.name}
+                      onPress={onPress}
+                      style={{
+                        top: -30,
+                        width: 70,
+                        height: 70,
+                        borderRadius: 35,
+                        backgroundColor: "#c2410c",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        shadowColor: "#000",
+                        shadowOpacity: 0.3,
+                        shadowRadius: 5,
+                        shadowOffset: { width: 0, height: 3 },
+                        elevation: 6,
+                      }}
+                    >
+                      <Ionicons name="add" size={32} color="white" />
+                    </TouchableOpacity>
+                  );
+                }
+
+                // Regular tab icons
+                let iconName: keyof typeof Ionicons.glyphMap = "ellipse";
+                if (route.name === "Home") iconName = "location-outline";
+                if (route.name === "Browse") iconName = "search-outline";
+                if (route.name === "Cart") iconName = "chatbubble-outline";
+                if (route.name === "Profile") iconName = "settings-outline";
+
+                return (
+                  <TouchableOpacity
+                    key={route.name}
+                    onPress={onPress}
+                    style={{ alignItems: "center", flex: 1 }}
+                  >
+                    <Ionicons name={iconName} size={24} color={isFocused ? "#c2410c" : "black"} />
+                    <Text style={{ color: isFocused ? "#c2410c" : "black", fontSize: 12 }}>
+                      {label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+
       </View>
     </View>
   );
