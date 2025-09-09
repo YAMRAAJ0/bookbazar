@@ -13,6 +13,7 @@ import WishlistScreen from "./WishlistScreen";
 import SellScreen from "./SellScreen"; 
 import BuyPage from "./BuyPage";
 import CheckoutScreen from "./CheckoutScreen";
+import CustomTabBar from "./CustomTabBar";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -68,15 +69,6 @@ function CartStack() {
 
 
 
-// Middle Sell Button
-const TabBarSellButton = ({ children, onPress }: any) => (
-  <TouchableOpacity
-    className="bg-orange-700 w-16 h-16 rounded-full justify-center items-center -mt-8 shadow-lg"
-    onPress={onPress}
-  >
-    {children}
-  </TouchableOpacity>
-);
 
 export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
   return (
@@ -84,12 +76,7 @@ export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: "white",
-          borderTopWidth: 1,
-          borderTopColor: "#e5e7eb",
-          height: 60,
-        },
+        tabBarStyle: { position: "absolute", backgroundColor: "transparent", elevation: 0 },
         tabBarIcon: ({ focused }) => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
@@ -122,27 +109,17 @@ export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
           );
         },
       })}
+      tabBar={(props) => <CustomTabBar {...props} />}
+
+
     >
       <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Browse" component={BrowseStack} />
-
-      {/* Middle Sell Button */}
-      <Tab.Screen
-        name="Sell"
-        component={SellScreen}
-        options={{
-          tabBarButton: (props) => (
-            <TabBarSellButton {...props}>
-              <Text className="text-white text-center text-2xl">Sell</Text>
-            </TabBarSellButton>
-          ),
-        }}
-      />
-
-      <Tab.Screen name="Cart" component={CartStack} />
-      <Tab.Screen name="Profile">
-        {() => <ProfileStack onLogout={onLogout} />}
-      </Tab.Screen>
+  <Tab.Screen name="Browse" component={BrowseStack} />
+  <Tab.Screen name="Sell" component={SellScreen} />
+  <Tab.Screen name="Cart" component={CartStack} />
+  <Tab.Screen name="Profile">
+    {() => <ProfileStack onLogout={onLogout} />}
+  </Tab.Screen>
     </Tab.Navigator>
   );
 }
