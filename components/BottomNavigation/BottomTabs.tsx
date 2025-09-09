@@ -4,16 +4,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 
-import HomeHero from "../pages/Home";
-import ProfileScreen from "./ProfileScreen";
-import BrowseScreen from "./BrowseScreen";
-import CartScreen from "./CartScreen";
-import NotificationScreen from "./NotificationScreen";
-import WishlistScreen from "./WishlistScreen";
-import SellScreen from "./SellBook/SellScreen"; 
-import AddBook from "./SellBook/AddBook";
-import BuyPage from "./BuyPage";
-import CheckoutScreen from "./CheckoutScreen";
+import HomeHero from "../../pages/Home";
+import ProfileScreen from "../../pages/ProfileScreen";
+import BrowseScreen from "../../pages/BrowseScreen";
+import CartScreen from "../../pages/CartScreen";
+import NotificationScreen from "../NotificationScreen";
+import WishlistScreen from "../WishlistScreen";
+import SellScreen from "../SellBook/SellScreen"; 
+import AddBook from "../SellBook/AddBook";
+import BuyPage from "../BuyPage";
+import CheckoutScreen from "../CheckoutScreen";
 import CustomTabBar from "./CustomTabBar";
 
 const Tab = createBottomTabNavigator();

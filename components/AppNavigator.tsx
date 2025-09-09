@@ -1,6 +1,6 @@
 // AppNavigator.tsx
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BottomTabs from "./BottomTabs";
+import BottomTabs from "./BottomNavigation/BottomTabs";
 import BuyPage from "./BuyPage";
 import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
@@ -9,6 +9,7 @@ import CheckoutScreen from "./CheckoutScreen";
 import SellScreen from "./SellBook/SellScreen";
 import AddBook from "./SellBook/AddBook";
 import DonateBook from "./SellBook/DonateBook";
+import ProfileScreen from "./ProfileScreen";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
@@ -25,6 +26,9 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       <Stack.Screen name="Sell" component={SellScreen} />
       <Stack.Screen name="AddBook" component={AddBook} />
       <Stack.Screen name="Donate" component={DonateBook} />
+      <Stack.Screen name="Profile">
+        {(props) => <ProfileScreen {...props} onLogout={onLogout} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 }
