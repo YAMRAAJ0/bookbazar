@@ -1,4 +1,5 @@
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const books = [
   {
@@ -24,7 +25,7 @@ const books = [
   },
 ];
 
-const SellScreen = () => {
+const SellScreen = ({ navigation }: any) => {
   return (
     <View className="flex-1 bg-white px-4 py-6">
       {/* Header */}
@@ -72,7 +73,7 @@ const SellScreen = () => {
       )}
 
       {/* Add Book Button */}
-      <TouchableOpacity className="bg-orange-600 py-4 rounded-xl mt-6 items-center">
+      <TouchableOpacity onPress={() => navigation.navigate("AddBook")} className="bg-orange-600 py-4 rounded-xl mt-6 items-center">
         <Text className="text-white text-lg font-semibold">+ Add New Book</Text>
       </TouchableOpacity>
     </View>

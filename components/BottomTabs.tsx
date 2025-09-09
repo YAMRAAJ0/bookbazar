@@ -11,6 +11,7 @@ import CartScreen from "./CartScreen";
 import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
 import SellScreen from "./SellBook/SellScreen"; 
+import AddBook from "./SellBook/AddBook";
 import BuyPage from "./BuyPage";
 import CheckoutScreen from "./CheckoutScreen";
 import CustomTabBar from "./CustomTabBar";
@@ -40,6 +41,8 @@ function HomeStack() {
       <Stack.Screen name="Wishlist" component={WishlistScreen} />
       <Stack.Screen name="BuyPage" component={BuyPage} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
+      <Stack.Screen name="Sell" component={SellScreen} />
+      <Stack.Screen name="AddBook" component={AddBook} />
     </Stack.Navigator>
   );
 }

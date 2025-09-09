@@ -66,9 +66,9 @@ const HomeHero = () => {
                   + Sell Your Books
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate("Browse" as never)} className="bg-white px-4 py-2 rounded-full">
+              <TouchableOpacity onPress={() => navigation.navigate("Donate" as never)} className="bg-white px-4 py-2 rounded-full">
                 <Text className="text-gray-800 font-semibold">
-                  Browse Collection
+                  Donate Your Books
                 </Text>
               </TouchableOpacity>
             </View>

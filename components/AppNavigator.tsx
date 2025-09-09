@@ -6,6 +6,9 @@ import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
 import CartScreen from "./CartScreen";
 import CheckoutScreen from "./CheckoutScreen";
+import SellScreen from "./SellBook/SellScreen";
+import AddBook from "./SellBook/AddBook";
+import DonateBook from "./SellBook/DonateBook";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
@@ -19,6 +22,9 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Wishlist" component={WishlistScreen} />
       <Stack.Screen name="Cart" component={CartScreen} />
+      <Stack.Screen name="Sell" component={SellScreen} />
+      <Stack.Screen name="AddBook" component={AddBook} />
+      <Stack.Screen name="Donate" component={DonateBook} />
     </Stack.Navigator>
   );
 }
