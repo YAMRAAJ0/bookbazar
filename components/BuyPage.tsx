@@ -115,7 +115,7 @@ const BuyPage = () => {
         <View className="flex-row justify-between mb-6">
           <TouchableOpacity
             onPress={() => navigation.navigate("Checkout", { book })}
-            className="bg-green-600 flex-1 py-3 mr-2 rounded-xl items-center"
+            className="bg-orange-700 flex-1 py-3 mr-2 rounded-xl items-center"
           >
             <Text className="text-white font-semibold text-lg">Buy Now</Text>
           </TouchableOpacity>

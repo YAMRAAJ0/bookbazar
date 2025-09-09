@@ -71,9 +71,9 @@ export default function CartScreen() {
       </ScrollView>
 
       {/* Footer */}
-      <View className="p-4 border-t border-gray-200">
+      <View className="p-4 border-t pb-16 border-gray-200">
         <Text className="text-lg font-bold">Total: ${total}</Text>
-        <TouchableOpacity className="bg-green-600 py-3 rounded-xl items-center mt-3">
+        <TouchableOpacity className="bg-orange-700 py-3  rounded-xl items-center mt-3">
           <Text className="text-white font-semibold text-lg">Checkout</Text>
         </TouchableOpacity>
       </View>

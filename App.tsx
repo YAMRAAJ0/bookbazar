@@ -3,8 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import Header from "components/Header";
-import LoginScreen from "components/LoginScreen";
-import RegisterScreen from "components/RegisterScreen";
+import LoginScreen from "components/Auth/LoginScreen";
+import RegisterScreen from "components/Auth/RegisterScreen";
 import WelcomeConsentScreen from "components/welcome-consent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SplashScreen from "components/SplashScreen";
@@ -86,7 +86,7 @@ export default function App() {
           // Logged in
           <>
             <Header />
-            <AppNavigator screenProps={{ onLogout: handleLogout }} />
+            <AppNavigator onLogout={handleLogout} />
             
           </>
         )}

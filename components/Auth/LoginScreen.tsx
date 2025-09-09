@@ -40,23 +40,23 @@ export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () =
         <ImageBackground source={{ uri: "https://images.unsplash.com/photo-1508780709619-79562169bc64" }} className="flex-1" resizeMode="cover">
           <View className="absolute inset-0 bg-purple-900/70" />
           <View className="flex-1 justify-center px-8">
-            <View className="items-center mb-8">
+            {/* <View className="items-center mb-8">
               <Image source={{ uri: "https://img.icons8.com/color/96/000000/react-native.png" }} className="w-20 h-20 mb-3" />
-              <Text className="text-2xl font-bold text-white">MyApp</Text>
-            </View>
+              <Text className="text-2xl font-bold text-orange-700">BookMarket</Text>
+            </View> */}
 
             <View className="bg-white rounded-2xl p-6 shadow-lg">
-              <Text className="text-2xl font-bold text-purple-700 text-center mb-6">Welcome Back 👋</Text>
+              <Text className="text-2xl font-bold text-orange-700 text-center mb-6">BookMarket</Text>
 
               <TextInput placeholder="Enter Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
               <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="border border-gray-300 rounded-lg px-4 py-3 mb-6" secureTextEntry />
 
-              <TouchableOpacity onPress={handleLogin} className="bg-purple-600 py-3 rounded-xl items-center mb-4">
+              <TouchableOpacity onPress={handleLogin} className="bg-orange-600 py-3 rounded-xl items-center mb-4">
                 <Text className="text-white font-semibold text-lg">Login</Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={onRegisterPage} className="items-center">
-                <Text className="text-purple-700 font-semibold">Don't have an account? Register</Text>
+                <Text className="text-orange-700 font-semibold">Don't have an account? Sign Up</Text>
               </TouchableOpacity>
             </View>
           </View>

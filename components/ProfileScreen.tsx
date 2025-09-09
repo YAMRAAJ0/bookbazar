@@ -5,14 +5,14 @@ import { Ionicons } from "@expo/vector-icons";
 export default function ProfileScreen({ onLogout }: { onLogout: () => void }) {
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="items-center py-16 bg-purple-50">
+      <View className="items-center py-16 bg-orange-100">
       <Image
-            source={{ uri: "https://randomuser.me/api/portraits/men/32.jpg" }}
+            source={{ uri: "https://img.freepik.com/premium-photo/vector-avatar-profile-icon_837074-8917.jpg" }}
             className="w-24 h-24 rounded-full mb-3"
             />
 
-        <Text className="text-xl font-bold text-purple-700">John Doe</Text>
-        <Text className="text-gray-500">johndoe@example.com</Text>
+        <Text className="text-xl font-bold text-orange-700">User Name</Text>
+        <Text className="text-gray-500">user@example.com</Text>
       </View>
 
       <View className="mt-6">
@@ -39,8 +39,8 @@ export default function ProfileScreen({ onLogout }: { onLogout: () => void }) {
 
       <View className="px-6 mt-8">
         <TouchableOpacity
-          onPress={onLogout} // use callback
-          className="bg-red-500 py-3 rounded-xl items-center"
+          onPress={onLogout} 
+          className="bg-orange-700 py-3 rounded-xl items-center"
         >
           <Text className="text-white font-semibold text-lg">Log Out</Text>
         </TouchableOpacity>
