@@ -3,12 +3,13 @@ import { View, Text, TextInput, TouchableOpacity, Alert, ImageBackground, Image,
 import { getUsers, User } from "./storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 const LOGIN_TOKEN_KEY = "user_token";
 
 export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () => void; onRegisterPage: () => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
     const users: User[] = await getUsers();
@@ -49,7 +50,17 @@ export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () =
               <Text className="text-2xl font-bold text-orange-700 text-center mb-6">BookMarket</Text>
 
               <TextInput placeholder="Enter Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
-              <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="border border-gray-300 rounded-lg px-4 py-3 mb-6" secureTextEntry />
+               <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
+             
+              <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="flex-1 py-3" secureTextEntry={!showPassword} />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Ionicons
+                  name={showPassword ? "eye-off" : "eye"}
+                  size={22}
+                  color="gray"
+                />
+              </TouchableOpacity>
+            </View>
 
               <TouchableOpacity onPress={handleLogin} className="bg-orange-600 py-3 rounded-xl items-center mb-4">
                 <Text className="text-white font-semibold text-lg">Login</Text>

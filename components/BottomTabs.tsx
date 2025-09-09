@@ -10,7 +10,7 @@ import BrowseScreen from "./BrowseScreen";
 import CartScreen from "./CartScreen";
 import NotificationScreen from "./NotificationScreen";
 import WishlistScreen from "./WishlistScreen";
-import SellScreen from "./SellScreen"; 
+import SellScreen from "./SellBook/SellScreen"; 
 import BuyPage from "./BuyPage";
 import CheckoutScreen from "./CheckoutScreen";
 import CustomTabBar from "./CustomTabBar";
