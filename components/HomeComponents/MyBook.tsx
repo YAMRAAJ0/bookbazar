@@ -1,7 +1,7 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { books } from "../data/books";
-import { useWishlist } from "../context/WishlistContext";
+import { books } from "../../data/books";
+import { useWishlist } from "../../context/WishlistContext";
 
 const MyBook = () => {
   const navigation = useNavigation();

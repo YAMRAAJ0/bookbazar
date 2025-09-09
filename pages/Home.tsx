@@ -1,13 +1,12 @@
 // HomeHero.tsx
 import { View, Text, ImageBackground, TextInput, TouchableOpacity, ScrollView, Image, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { books } from "../data/books";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
-import HomeHero from "../components/HomeHero";
-import Category from "../components/Category";
-import MyBook from "../components/MyBook";
-import Recommended from "components/Recommended";
+import HomeHero from "../components/HomeComponents/HomeHero";
+import Category from "../components/HomeComponents/Category";
+import MyBook from "../components/HomeComponents/MyBook";
+import Recommended from "../components/HomeComponents/Recommended";
 const Tab = createBottomTabNavigator();
 
 const Home = () => {

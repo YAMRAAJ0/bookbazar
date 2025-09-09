@@ -1,7 +1,7 @@
 // HomeHero.tsx
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { books } from "../data/books";
+import { books } from "../../data/books";
 
 const Recommended = () => {
   const [wishlist, setWishlist] = useState<number[]>([]);

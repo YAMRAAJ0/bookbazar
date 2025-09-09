@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useWishlist } from "../context/WishlistContext";
 import { useNotifications } from "../context/NotificationContext";
+import { Ionicons } from "@expo/vector-icons";
 
 const Header = () => {
   const navigation = useNavigation();
@@ -16,8 +17,22 @@ const Header = () => {
   return (
     <SafeAreaView>
       <View className="flex-row items-center justify-between p-4 bg-white shadow">
-        <Text className="text-xl font-bold text-orange-700">BookMarket</Text>
+        {/* Left side: Back button or Logo */}
+        <View className="flex-row items-center">
+          {navigation.canGoBack() ? (
+            <TouchableOpacity
+              className="mr-2"
+              onPress={() => navigation.goBack()}
+            >
+              <Ionicons name="arrow-back" size={24} color="#f97316" />
+            </TouchableOpacity>
+          ) : null}
 
+          {/* Logo */}
+          <Text className="text-xl font-bold text-orange-700">BookMarket</Text>
+        </View>
+
+        {/* Right side: Search + Icons */}
         <View className="flex-row items-center space-x-3">
           {/* Search Bar */}
           <TextInput
