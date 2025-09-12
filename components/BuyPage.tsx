@@ -7,23 +7,24 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
-  Alert,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { books } from "../data/books";
 import { Ionicons } from "@expo/vector-icons";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
+import { useNotifications } from "../context/NotificationContext";
 const BuyPage = () => {
   const route = useRoute<any>();
   const navigation = useNavigation<any>();
   const book = route.params?.book;
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const { addNotification } = useNotifications();
 
   const handleAddToCart = () => {
-    addToCart(book); // book contains all fields needed
-    Alert.alert("Added to cart", `${book.title} added to your cart!`);
+    addToCart(book); 
+    addNotification(`Added "${book.title}" to cart`);
   };
 
   const buyNow = (book: any) => {
@@ -46,40 +47,37 @@ const BuyPage = () => {
         <Text className="text-purple-700 font-semibold">⬅ Back</Text>
       </TouchableOpacity>
 
-      {/* Book Cover */}
-   {/* Book Cover */}
-   <View className="items-center px-4 relative">
-        <Image
-          source={{ uri: book.cover }}
-          className="w-64 h-80 rounded-xl mb-4"
-          resizeMode="cover"
-        />
-        {/* Wishlist Icon */}
-    {/* Wishlist Icon */}
-<TouchableOpacity
-  onPress={() => toggleWishlist(book)}
-  style={{
-    position: "absolute",
-    top: 10,
-    right: 20,
-    backgroundColor: "rgba(255,255,255,0.7)",
-    borderRadius: 20,
-    padding: 6,
-  }}
->
-  <Ionicons
-    name={isInWishlist(book.id) ? "heart" : "heart-outline"}
-    size={24}
-    color="red"
-  />
-</TouchableOpacity>
+  
+      <View className="items-center px-4 relative">
+            <Image
+              source={{ uri: book.cover }}
+              className="w-64 h-80 rounded-xl mb-4"
+              resizeMode="cover"
+            />
+          
+        <TouchableOpacity
+          onPress={() => toggleWishlist(book)}
+          style={{
+            position: "absolute",
+            top: 10,
+            right: 20,
+            backgroundColor: "rgba(255,255,255,0.7)",
+            borderRadius: 20,
+            padding: 6,
+          }}
+        >
+          <Ionicons
+            name={isInWishlist(book.id) ? "heart" : "heart-outline"}
+            size={24}
+            color="red"
+          />
+    </TouchableOpacity>
 
       </View>
 
-      {/* Book Info */}
- {/* Book Info */}
+
  <View className="px-4">
-  {/* Title + Rating in same row */}
+  
   <View className="flex-row items-center justify-between">
     <Text className="text-2xl font-bold text-gray-800 flex-1 mr-2">
       {book.title}

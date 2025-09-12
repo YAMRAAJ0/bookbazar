@@ -73,7 +73,7 @@ const Header = () => {
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             className="p-2 relative"
             onPress={() => navigation.navigate("Cart" as never)}
           >
@@ -83,7 +83,7 @@ const Header = () => {
                 <Text className="text-white text-xs font-bold">{cartCount}</Text>
               </View>
             )}
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </SafeAreaView>

@@ -1,11 +1,13 @@
-// CartScreen.tsx
-
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useCart } from "../context/CartContext";
-export default function CartScreen() {
-  const { cart, updateQty } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2);
+export default function CartScreen() {
+  const { cart, updateQty, removeFromCart } = useCart(); // ✅ Added removeItem
+
+  const total = cart
+  .reduce((sum, item) => sum + Number(item.price) * item.qty, 0)
+  .toFixed(2);
+
 
   return (
     <View className="flex-1 bg-white">
@@ -57,6 +59,14 @@ export default function CartScreen() {
                 >
                   <Text>+</Text>
                 </TouchableOpacity>
+
+                {/* Remove Button */}
+                <TouchableOpacity
+                  onPress={() => removeFromCart(item.id)}
+                  className="bg-red-500 px-3 py-1 ml-4 rounded"
+                >
+                  <Text className="text-white font-semibold">Remove</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -70,6 +80,7 @@ export default function CartScreen() {
           <Text className="text-white font-semibold text-lg">Checkout</Text>
         </TouchableOpacity>
       </View>
+
     </View>
   );
 }

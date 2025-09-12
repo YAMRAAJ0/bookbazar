@@ -46,12 +46,12 @@ export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () =
               <Text className="text-2xl font-bold text-orange-700">BookMarket</Text>
             </View> */}
 
-            <View className="bg-white rounded-2xl p-6 shadow-lg">
+            <View className="bg-white text-black rounded-2xl p-6 shadow-lg">
               <Text className="text-2xl font-bold text-orange-700 text-center mb-6">BookMarket</Text>
 
               <TextInput placeholder="Enter Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
                <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
-             
+           
               <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="flex-1 py-3" secureTextEntry={!showPassword} />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Ionicons
