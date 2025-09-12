@@ -1,35 +1,9 @@
-import React, { useState } from "react";
+// CartScreen.tsx
+
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
-
+import { useCart } from "../context/CartContext";
 export default function CartScreen() {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      title: "The Great Gatsby",
-      author: "F. Scott Fitzgerald",
-      cover: "https://covers.openlibrary.org/b/id/7222246-L.jpg",
-      price: 12.99,
-      qty: 1,
-    },
-    {
-      id: 2,
-      title: "1984",
-      author: "George Orwell",
-      cover: "https://covers.openlibrary.org/b/id/7222246-L.jpg",
-      price: 9.99,
-      qty: 2,
-    },
-  ]);
-
-  const updateQty = (id: number, type: string) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, qty: type === "inc" ? item.qty + 1 : Math.max(1, item.qty - 1) }
-          : item
-      )
-    );
-  };
+  const { cart, updateQty } = useCart();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0).toFixed(2);
 
@@ -43,11 +17,30 @@ export default function CartScreen() {
             key={item.id}
             className="flex-row items-center mb-4 p-3 bg-gray-50 rounded-xl shadow-sm"
           >
-            <Image source={{ uri: item.cover }} className="w-16 h-24 rounded-md" />
+            <Image source={{ uri: item.cover }} className="w-20 h-28 rounded-md" />
             <View className="ml-4 flex-1">
               <Text className="text-lg font-bold">{item.title}</Text>
               <Text className="text-gray-600">{item.author}</Text>
-              <Text className="text-green-700 font-semibold mt-1">${item.price}</Text>
+              <Text className="text-gray-500 text-xs">
+                {item.publisher} • {item.language} • {item.category}
+              </Text>
+
+              {/* Price Section */}
+              <View className="flex-row items-center mt-1">
+                <Text className="text-green-700 font-bold mr-2">{item.price}</Text>
+                {item.originalPrice && (
+                  <Text className="text-gray-500 line-through text-xs mr-2">
+                    {item.originalPrice}
+                  </Text>
+                )}
+                {item.discount && <Text className="text-orange-600 text-xs">{item.discount}</Text>}
+              </View>
+
+              {/* Rating */}
+              <Text className="text-yellow-500 text-sm mt-1">
+                {"★".repeat(Math.floor(item.rating))}
+                {"☆".repeat(5 - Math.floor(item.rating))}
+              </Text>
 
               {/* Quantity Controls */}
               <View className="flex-row items-center mt-2">
@@ -72,8 +65,8 @@ export default function CartScreen() {
 
       {/* Footer */}
       <View className="p-4 border-t pb-16 border-gray-200">
-        <Text className="text-lg font-bold">Total: ${total}</Text>
-        <TouchableOpacity className="bg-orange-700 py-3  rounded-xl items-center mt-3">
+        <Text className="text-lg font-bold">Total: ₹{total}</Text>
+        <TouchableOpacity className="bg-orange-700 py-3 rounded-xl items-center mt-3">
           <Text className="text-white font-semibold text-lg">Checkout</Text>
         </TouchableOpacity>
       </View>

@@ -13,6 +13,8 @@ import AppNavigator from "./components/AppNavigator";
 import { WishlistProvider } from "./context/WishlistContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import * as Notifications from "expo-notifications";
+import { SearchProvider } from "./context/SearchContext";
+import { CartProvider } from "./context/CartContext";
 const LOGIN_TOKEN_KEY = "user_token";
 
 Notifications.setNotificationHandler({
@@ -65,7 +67,9 @@ export default function App() {
   return (
     <>
      <NotificationProvider>
+      <SearchProvider>
       <WishlistProvider>
+      <CartProvider>
      
       <NavigationContainer>
         {!isLoggedIn ? (
@@ -91,8 +95,9 @@ export default function App() {
           </>
         )}
       </NavigationContainer>
-      
+      </CartProvider>      
       </WishlistProvider>
+      </SearchProvider>
       </NotificationProvider>
       <StatusBar style="auto" />
     </>

@@ -13,20 +13,17 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import { books } from "../data/books";
 import { Ionicons } from "@expo/vector-icons";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 const BuyPage = () => {
   const route = useRoute<any>();
   const navigation = useNavigation<any>();
   const book = route.params?.book;
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const [cart, setCart] = useState<number[]>([]);
+  const { addToCart } = useCart();
 
-  const addToCart = (id: number) => {
-    if (!cart.includes(id)) {
-      setCart([...cart, id]);
-      Alert.alert("Added to cart", `${book.title} added to your cart!`);
-    } else {
-      Alert.alert("Already in cart", `${book.title} is already in your cart.`);
-    }
+  const handleAddToCart = () => {
+    addToCart(book); // book contains all fields needed
+    Alert.alert("Added to cart", `${book.title} added to your cart!`);
   };
 
   const buyNow = (book: any) => {
@@ -136,7 +133,7 @@ const BuyPage = () => {
       <Text className="text-white font-semibold text-lg">Buy Now</Text>
     </TouchableOpacity>
     <TouchableOpacity
-      onPress={() => addToCart(book.id)}
+      onPress={() => handleAddToCart()}
       className="bg-purple-600 flex-1 py-3 ml-2 rounded-xl items-center"
     >
       <Text className="text-white font-semibold text-lg">Add to Cart</Text>

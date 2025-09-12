@@ -12,6 +12,7 @@ import DonateBook from "./SellBook/DonateBook";
 import ProfileScreen from "../pages/ProfileScreen";
 import SettingsScreen from "./SettingPage/SettingsScreen";
 import HelpCenterScreen from "./HelpCenterScreen";
+import BrowseScreen from "../pages/BrowseScreen";
 import MyOrders from "./MyOrders";
 import '../global.css';
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       <Stack.Screen name="Sell" component={SellScreen} />
       <Stack.Screen name="AddBook" component={AddBook} />
       <Stack.Screen name="Donate" component={DonateBook} />
+      <Stack.Screen name="Browse" component={BrowseScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Profile">
         {(props) => <ProfileScreen {...props} onLogout={onLogout} />}

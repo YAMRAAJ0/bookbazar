@@ -4,6 +4,7 @@ import { View, TouchableOpacity, Text, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Svg, { Path } from "react-native-svg";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import { useCart } from "../../context/CartContext";
 
 const TabBarHeight = 70;
 

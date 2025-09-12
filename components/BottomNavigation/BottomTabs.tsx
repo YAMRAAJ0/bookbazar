@@ -2,7 +2,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
-
 import HomeHero from "../../pages/Home";
 import ProfileScreen from "../../pages/ProfileScreen";
 import BrowseScreen from "../../pages/BrowseScreen";
@@ -14,7 +13,8 @@ import AddBook from "../SellBook/AddBook";
 import BuyPage from "../BuyPage";
 import CheckoutScreen from "../CheckoutScreen";
 import CustomTabBar from "./CustomTabBar";
-
+import { useCart } from "../../context/CartContext";
+import { View, Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -98,6 +98,7 @@ export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
       <Tab.Screen name="Home" component={HomeStack} />
   <Tab.Screen name="Browse" component={BrowseStack} />
   <Tab.Screen name="Sell" component={SellScreen} />
+
   <Tab.Screen name="Cart" component={CartStack} />
   <Tab.Screen name="Profile">
     {() => <ProfileStack onLogout={onLogout} />}
