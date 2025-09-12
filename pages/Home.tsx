@@ -35,14 +35,7 @@ const Home = () => {
             <Text className="text-gray-600">New Daily</Text>
           </View>
         </View>
-        {/* Category Chips */}
-        <Text className="text-xl font-bold px-4 mt-6 mb-3">
-          📚 Category
-        </Text>
-        <Category/>
-        {/* Featured Books Slider */}
-        <MyBook/>
-        {/* Recommended Section */}
+
      <Recommended/>
       </ScrollView>
     </SafeAreaView>

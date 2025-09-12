@@ -80,63 +80,131 @@ const BuyPage = () => {
       </View>
 
       {/* Book Info */}
-      <View className="px-4">
-        <Text className="text-2xl font-bold text-gray-800">{book.title}</Text>
-        <Text className="text-lg text-gray-600 mb-2">{book.author}</Text>
-        <Text className="text-orange-700 font-bold text-xl mb-4">{book.price}</Text>
-        <Text className="text-gray-700 mb-6">{book.description}</Text>
+ {/* Book Info */}
+ <View className="px-4">
+  {/* Title + Rating in same row */}
+  <View className="flex-row items-center justify-between">
+    <Text className="text-2xl font-bold text-gray-800 flex-1 mr-2">
+      {book.title}
+    </Text>
+    <Text className="text-yellow-500 text-lg">
+      {"★".repeat(Math.floor(book.rating))}
+      {"☆".repeat(5 - Math.floor(book.rating))}
+    </Text>
+  </View>
 
-        {/* Buy / Add to Cart Buttons */}
-        <View className="flex-row justify-between mb-6">
-          <TouchableOpacity
-             onPress={() => buyNow(book)} 
-            className="bg-green-600 flex-1 py-3 mr-2 rounded-xl items-center"
-          >
-            <Text className="text-white font-semibold text-lg">Buy Now</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => addToCart(book.id)}
-            className="bg-purple-600 flex-1 py-3 ml-2 rounded-xl items-center"
-          >
-            <Text className="text-white font-semibold text-lg">Add to Cart</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+  <Text className="text-lg text-gray-600 mb-2">by {book.author}</Text>
 
-      {/* Suggested Books */}
-      <View className="px-4 mb-6">
-        <Text className="text-xl font-bold mb-3">📚 You may also like</Text>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={suggestedBooks}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              className="w-40 bg-white rounded-xl shadow mx-2 p-2"
-              onPress={() => navigation.navigate("BuyPage", { book: item })}
-            >
-              <Image
-                source={{ uri: item.cover }}
-                className="w-full h-48 rounded-lg mb-2"
-                resizeMode="cover"
-              />
-              {/* Offer Badge */}
-              <View className="absolute top-2 left-2 bg-red-500 px-2 py-1 rounded">
-                <Text className="text-white text-xs">20% OFF</Text>
-              </View>
-              <Text
-                numberOfLines={1}
-                className="text-base font-semibold text-gray-800"
-              >
-                {item.title}
-              </Text>
-              <Text className="text-sm text-gray-600">{item.author}</Text>
-              <Text className="text-orange-700 font-bold">{item.price}</Text>
-            </TouchableOpacity>
-          )}
+  {/* Book Price Section */}
+  <View className="flex-row items-center mb-4">
+    <Text className="text-orange-700 font-bold text-xl mr-2">{book.price}</Text>
+    {book.originalPrice && (
+      <Text className="text-gray-500 line-through mr-2">
+        {book.originalPrice}
+      </Text>
+    )}
+    {book.discount && (
+      <Text className="text-green-600 font-semibold">{book.discount}</Text>
+    )}
+  </View>
+
+
+
+  {/* Book Details */}
+  <View className="bg-gray-100 p-4 rounded-xl mb-6">
+    <Text className="text-base text-gray-800">
+      <Text className="font-semibold">Category: </Text>{book.category}
+    </Text>
+    <Text className="text-base text-gray-800">
+      <Text className="font-semibold">Publisher: </Text>{book.publisher || "Unknown"}
+    </Text>
+    <Text className="text-base text-gray-800">
+      <Text className="font-semibold">Language: </Text>{book.language || "N/A"}
+    </Text>
+    <Text className="text-base text-gray-800 mt-2">
+      <Text className="font-semibold">Description: </Text>
+      {book.description || "No description available."}
+    </Text>
+  </View>
+
+  {/* Buy / Add to Cart Buttons */}
+  <View className="flex-row justify-between mb-6">
+    <TouchableOpacity
+      onPress={() => buyNow(book)}
+      className="bg-green-600 flex-1 py-3 mr-2 rounded-xl items-center"
+    >
+      <Text className="text-white font-semibold text-lg">Buy Now</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => addToCart(book.id)}
+      className="bg-purple-600 flex-1 py-3 ml-2 rounded-xl items-center"
+    >
+      <Text className="text-white font-semibold text-lg">Add to Cart</Text>
+    </TouchableOpacity>
+  </View>
+</View>
+
+
+{/* Suggested Books */}
+<View className="px-4 mb-6">
+  <Text className="text-xl font-bold mb-3">📚 You may also like</Text>
+  <FlatList
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    data={suggestedBooks}
+    keyExtractor={(item) => item.id.toString()}
+    renderItem={({ item }) => (
+      <TouchableOpacity
+        className="w-40 bg-white rounded-xl shadow mx-2 p-2"
+        onPress={() => navigation.navigate("BuyPage", { book: item })}
+      >
+        <Image
+          source={{ uri: item.cover }}
+          className="w-full h-48 rounded-lg mb-2"
+          resizeMode="cover"
         />
-      </View>
+
+        {/* Offer Badge */}
+        {item.discount && (
+          <View className="absolute top-2 left-2 bg-red-500 px-2 py-1 rounded">
+            <Text className="text-white text-xs">{item.discount}</Text>
+          </View>
+        )}
+
+        {/* Title & Author */}
+        <Text className="text-base font-semibold" numberOfLines={1}>
+          {item.title}
+        </Text>
+        <Text className="text-sm text-gray-600" numberOfLines={1}>
+          {item.author}
+        </Text>
+        <Text className="text-xs text-gray-500" numberOfLines={1}>
+          {item.publisher || "Unknown"} • {item.language || "N/A"}
+        </Text>
+
+        {/* Price Section */}
+        <View className="flex-row items-center mt-1">
+          <Text className="text-orange-700 font-bold mr-1">{item.price}</Text>
+          {item.originalPrice && (
+            <Text className="text-gray-500 line-through text-xs mr-1">
+              {item.originalPrice}
+            </Text>
+          )}
+          {item.discount && (
+            <Text className="text-green-600 text-xs">{item.discount}</Text>
+          )}
+        </View>
+
+        {/* Rating */}
+        <Text className="text-yellow-500 text-sm">
+          {"★".repeat(Math.floor(item.rating || 0))}
+          {"☆".repeat(5 - Math.floor(item.rating || 0))}
+        </Text>
+      </TouchableOpacity>
+    )}
+  />
+</View>
+
     </ScrollView>
   );
 };

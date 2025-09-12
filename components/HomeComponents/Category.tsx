@@ -9,36 +9,31 @@ import {
   FlatList,
 } from "react-native";
 
-// ⭐ Sample Data
-const authorsList = [
-  "J.K. Rowling",
-  "George R.R. Martin",
-  "Chetan Bhagat",
-  "Paulo Coelho",
-  "Agatha Christie",
-];
-const publishersList = [
-  "Penguin",
-  "HarperCollins",
-  "Bloomsbury",
-  "Oxford Press",
-  "Macmillan",
-];
+const authorsList = ["J.K. Rowling", "George R.R. Martin", "Chetan Bhagat", "Paulo Coelho", "Agatha Christie"];
+const publishersList = ["Penguin", "HarperCollins", "Bloomsbury", "Oxford Press", "Macmillan"];
 const languages = ["English", "Hindi", "French", "Spanish", "German"];
 
-const Category = () => {
+const Category = ({ selectedCategory, setSelectedCategory, setFilters }: any) => {
   const [showFilters, setShowFilters] = useState(false);
 
-  // categories
-  const categories = ["Fiction", "Self-help", "Romance", "History", "Sci-Fi", "Mystery"];
+  const categories = [
+    "All",
+    "Fiction",
+    "Non-Fiction",
+    "Romance",
+    "Sci-Fi",
+    "History",
+    "Thriller",
+    "Self-Help",
+    "Philosophy",
+  ];
 
-  // filter states
+  // Local states for modal
   const [author, setAuthor] = useState("");
-  const [filteredAuthors, setFilteredAuthors] = useState(authorsList);
-  const [showAuthorDropdown, setShowAuthorDropdown] = useState(false);
-
   const [publisher, setPublisher] = useState("");
+  const [filteredAuthors, setFilteredAuthors] = useState(authorsList);
   const [filteredPublishers, setFilteredPublishers] = useState(publishersList);
+  const [showAuthorDropdown, setShowAuthorDropdown] = useState(false);
   const [showPublisherDropdown, setShowPublisherDropdown] = useState(false);
 
   const [minPrice, setMinPrice] = useState("");
@@ -46,39 +41,42 @@ const Category = () => {
   const [rating, setRating] = useState(0);
   const [language, setLanguage] = useState("");
 
-  // 🔍 Author search
-  const handleAuthorSearch = (text) => {
+  // Search filters
+  const handleAuthorSearch = (text: string) => {
     setAuthor(text);
     setShowAuthorDropdown(true);
-    const results = authorsList.filter((a) =>
-      a.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredAuthors(results);
+    setFilteredAuthors(authorsList.filter((a) => a.toLowerCase().includes(text.toLowerCase())));
   };
-
-  // 🔍 Publisher search
-  const handlePublisherSearch = (text) => {
+  const handlePublisherSearch = (text: string) => {
     setPublisher(text);
     setShowPublisherDropdown(true);
-    const results = publishersList.filter((p) =>
-      p.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredPublishers(results);
+    setFilteredPublishers(publishersList.filter((p) => p.toLowerCase().includes(text.toLowerCase())));
   };
 
   const applyFilters = () => {
-    const filters = { author, minPrice, maxPrice, rating, language, publisher };
-    console.log("Applied Filters:", filters);
+    setFilters({ author, minPrice, maxPrice, rating, language, publisher });
     setShowFilters(false);
   };
 
   return (
     <View className="mt-6 flex-row items-center px-4">
-      {/* Scrollable Categories */}
+      {/* Categories */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="flex-1">
         {categories.map((cat, i) => (
-          <TouchableOpacity key={i} className="bg-orange-100 px-4 py-2 rounded-full mr-3">
-            <Text className="text-orange-700 font-medium">{cat}</Text>
+          <TouchableOpacity
+            key={i}
+            onPress={() => setSelectedCategory(cat)}
+            className={`px-4 py-2 rounded-full mr-3 ${
+              selectedCategory === cat ? "bg-orange-600" : "bg-orange-100"
+            }`}
+          >
+            <Text
+              className={`font-medium ${
+                selectedCategory === cat ? "text-white" : "text-orange-700"
+              }`}
+            >
+              {cat}
+            </Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
