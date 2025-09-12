@@ -1,5 +1,4 @@
 // BottomTabs.tsx
-import { View, TouchableOpacity, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
@@ -82,31 +81,10 @@ export default function BottomTabs({ onLogout }: { onLogout: () => void }) {
         tabBarShowLabel: false,
         tabBarStyle: { position: "absolute", backgroundColor: "transparent", elevation: 0 },
         tabBarIcon: ({ focused }) => {
-          let iconName: keyof typeof Ionicons.glyphMap;
-
-          switch (route.name) {
-            case "Home":
-              iconName = focused ? "home" : "home-outline";
-              break;
-            case "Browse":
-              iconName = focused ? "book" : "book-outline";
-              break;
-            case "Cart":
-              iconName = focused ? "cart" : "cart-outline";
-              break;
-            case "Profile":
-              iconName = focused ? "person" : "person-outline";
-              break;
-            case "buy":
-              iconName = focused ? "book" : "book-outline";
-              break;
-            default:
-              iconName = "ellipse";
-          }
-
+      
           return (
             <Ionicons
-              name={iconName}
+              name="home-outline"
               size={24}
               color={focused ? "#f97316" : "#6b7280"}
             />

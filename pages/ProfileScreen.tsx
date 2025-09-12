@@ -6,14 +6,16 @@ export default function ProfileScreen({ onLogout }: { onLogout: () => void }) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="items-center py-16 bg-orange-100">
-        <Image
-          source={{ uri: "https://img.freepik.com/premium-photo/vector-avatar-profile-icon_837074-8917.jpg" }}
-          className="w-24 h-24 rounded-full mb-3"
-        />
+    <View className="flex-row items-center py-6 px-4 bg-yellow-400">
+      <Image
+        source={{ uri: "https://i.pravatar.cc/150" }}
+        style={{ width: 80, height: 80, borderRadius: 40 }}
+      />
+      <View className="ml-4">
         <Text className="text-xl font-bold text-orange-700">User Name</Text>
-        <Text className="text-gray-500">user@example.com</Text>
+        <Text className="text-gray-800">user@example.com</Text>
       </View>
+    </View>
 
       <View className="mt-6">
         <TouchableOpacity onPress={() => navigation.navigate("MyOrders")} className="flex-row items-center px-6 py-4 border-b border-gray-200">

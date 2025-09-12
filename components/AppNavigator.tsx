@@ -10,9 +10,10 @@ import SellScreen from "./SellBook/SellScreen";
 import AddBook from "./SellBook/AddBook";
 import DonateBook from "./SellBook/DonateBook";
 import ProfileScreen from "../pages/ProfileScreen";
-import SettingsScreen from "./SettingsScreen";
+import SettingsScreen from "./SettingPage/SettingsScreen";
 import HelpCenterScreen from "./HelpCenterScreen";
 import MyOrders from "./MyOrders";
+import '../global.css';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator({ onLogout }: { onLogout: () => void }) {

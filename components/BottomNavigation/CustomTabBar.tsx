@@ -87,10 +87,10 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
 
                 // Regular tab icons
                 let iconName: keyof typeof Ionicons.glyphMap = "ellipse";
-                if (route.name === "Home") iconName = "location-outline";
-                if (route.name === "Browse") iconName = "search-outline";
-                if (route.name === "Cart") iconName = "chatbubble-outline";
-                if (route.name === "Profile") iconName = "settings-outline";
+                if (route.name === "Home") iconName = "home-outline";
+                if (route.name === "Browse") iconName = "book-outline";
+                if (route.name === "Cart") iconName = "cart-outline";
+                if (route.name === "Profile") iconName = "person-outline";
 
                 return (
                   <TouchableOpacity

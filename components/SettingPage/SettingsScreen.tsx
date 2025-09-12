@@ -1,24 +1,35 @@
 // screens/SettingsScreen.tsx
-import React from "react";
-import { View, Text, ScrollView, TouchableOpacity, Switch, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Switch,
+  Alert,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function SettingsScreen({ navigation }: any) {
-  const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <ScrollView className="flex-1 bg-gray-100 p-4">
       {/* Header */}
-      <Text className="text-2xl font-bold text-orange-600 mb-4">⚙️ Settings</Text>
+      <Text className="text-2xl font-bold text-orange-600 mb-4">
+        ⚙️ Settings
+      </Text>
 
       {/* Profile Settings */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">👤 Profile Settings</Text>
+
         <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
           <Ionicons name="person-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Edit Profile</Text>
         </TouchableOpacity>
+
         <TouchableOpacity className="flex-row items-center py-3">
           <Ionicons name="lock-closed-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Change Password</Text>
@@ -28,6 +39,7 @@ export default function SettingsScreen({ navigation }: any) {
       {/* Address & Location */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">📍 Address & Location</Text>
+
         <TouchableOpacity className="flex-row items-center py-3">
           <Ionicons name="location-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Manage Saved Addresses</Text>
@@ -37,6 +49,7 @@ export default function SettingsScreen({ navigation }: any) {
       {/* Notifications */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">🔔 Notifications</Text>
+
         <View className="flex-row justify-between items-center py-3">
           <Text className="text-gray-700">Email / Push Notifications</Text>
           <Switch
@@ -51,10 +64,12 @@ export default function SettingsScreen({ navigation }: any) {
       {/* Payment Settings */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">💳 Payment Settings</Text>
+
         <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
           <Ionicons name="card-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">RazorPay / COD</Text>
         </TouchableOpacity>
+
         <TouchableOpacity className="flex-row items-center py-3">
           <Ionicons name="cash-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Refund & Payout Preferences</Text>
@@ -64,8 +79,19 @@ export default function SettingsScreen({ navigation }: any) {
       {/* App Preferences */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">⚡ App Preferences</Text>
-        <View className="flex-row justify-between items-center py-3 border-b border-gray-200">
-          <Text className="text-gray-700">Dark / Light Mode</Text>
+
+        {/* Language Selection */}
+        <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
+          <Ionicons name="language-outline" size={22} color="#f97316" />
+          <Text className="ml-3 text-gray-700">Language Selection</Text>
+        </TouchableOpacity>
+
+        {/* Dark Mode */}
+        <View className="flex-row justify-between items-center py-3">
+          <View className="flex-row items-center">
+            <Ionicons name="moon-outline" size={22} color="#f97316" />
+            <Text className="ml-3 text-gray-700">Dark Mode</Text>
+          </View>
           <Switch
             value={darkMode}
             onValueChange={setDarkMode}
@@ -73,28 +99,31 @@ export default function SettingsScreen({ navigation }: any) {
             thumbColor={darkMode ? "#fff" : "#f4f4f5"}
           />
         </View>
-        <TouchableOpacity className="flex-row items-center py-3">
-          <Ionicons name="language-outline" size={22} color="#f97316" />
-          <Text className="ml-3 text-gray-700">Language Selection</Text>
-        </TouchableOpacity>
       </View>
 
-      {/* Security */}
+      {/* Help & Support */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
-        <Text className="text-lg font-semibold mb-2">🔒 Security</Text>
+        <Text className="text-lg font-semibold mb-2">🛟 Help & Support</Text>
+
         <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
-          <Ionicons name="shield-checkmark-outline" size={22} color="#f97316" />
-          <Text className="ml-3 text-gray-700">Two-Factor Authentication</Text>
+          <Ionicons name="help-circle-outline" size={22} color="#f97316" />
+          <Text className="ml-3 text-gray-700">FAQs</Text>
         </TouchableOpacity>
+
         <TouchableOpacity className="flex-row items-center py-3">
-          <Ionicons name="time-outline" size={22} color="#f97316" />
-          <Text className="ml-3 text-gray-700">Login History</Text>
+          <Ionicons name="mail-outline" size={22} color="#f97316" />
+          <Text className="ml-3 text-gray-700">Contact Support</Text>
         </TouchableOpacity>
       </View>
 
       {/* Log Out */}
       <TouchableOpacity
-        onPress={() => navigation.navigate("Login")}
+        onPress={() =>
+          Alert.alert("Log Out", "Are you sure you want to log out?", [
+            { text: "Cancel", style: "cancel" },
+            { text: "Log Out", style: "destructive", onPress: () => navigation.navigate("Login") },
+          ])
+        }
         className="bg-red-500 rounded-2xl p-4 items-center mt-4 mb-10"
       >
         <Text className="text-white font-semibold">🚪 Log Out</Text>

@@ -13,7 +13,7 @@ type Book = {
 type WishlistContextType = {
   wishlist: Book[];
   toggleWishlist: (book: Book) => void;
-  isInWishlist: (book: Book) => boolean;  // 👈 added
+  isInWishlist: (book: Book) => boolean;  
 };
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
