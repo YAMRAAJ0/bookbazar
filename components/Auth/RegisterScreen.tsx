@@ -94,7 +94,6 @@ export default function RegisterScreen({
             Create Account
           </Text>
 
-          <Text className="text-gray-600 text-sm mb-2">Enter your full name</Text>
           <TextInput
             placeholder="Full Name"
             placeholderTextColor="black"
@@ -102,7 +101,7 @@ export default function RegisterScreen({
             onChangeText={setName}
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
           />
-          <Text className="text-gray-600 text-sm mb-2">Enter your email address</Text>
+ 
           <TextInput
             placeholder="Email"
             placeholderTextColor="black"
@@ -111,7 +110,7 @@ export default function RegisterScreen({
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
             keyboardType="email-address"
           />
-          <Text className="text-gray-600 text-sm mb-2">Enter your mobile number</Text>
+ 
           <TextInput
             placeholder="Mobile Number"
             placeholderTextColor="black"
@@ -120,7 +119,7 @@ export default function RegisterScreen({
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
             keyboardType="phone-pad"
           />
-          <Text className="text-gray-600 text-sm mb-2">Select your gender</Text>
+ 
           <View className="border border-gray-300 rounded-lg mb-4">
             <Picker
               selectedValue={gender}
@@ -133,7 +132,7 @@ export default function RegisterScreen({
               <Picker.Item label="Other" value="Other" />
             </Picker>
           </View>
-          <Text className="text-gray-600 text-sm mb-2">Enter your OTP</Text> 
+ 
           {/* OTP Input + Generate Button */}
           <View className="flex-row items-center mb-6">
             <TextInput
@@ -152,7 +151,7 @@ export default function RegisterScreen({
               <Text className="text-white font-semibold">Generate OTP</Text>
             </TouchableOpacity>
           </View>
-          <Text className="text-gray-600 text-sm mb-2">Enter your password</Text> 
+    
 
                 {/* Password Field with Eye Button */}
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
@@ -172,7 +171,7 @@ export default function RegisterScreen({
               />
             </TouchableOpacity>
           </View>
-          <Text className="text-gray-600 text-sm mb-2">Enter your confirm password</Text> 
+   
           {/* Confirm Password Field with Eye Button */}
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
             <TextInput
