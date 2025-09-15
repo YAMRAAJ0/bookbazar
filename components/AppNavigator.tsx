@@ -15,6 +15,7 @@ import HelpCenterScreen from "./HelpCenterScreen";
 import BrowseScreen from "../pages/BrowseScreen";
 import EditProfile from "./SettingPage/EditPrpfile";  
 import MyOrders from "./MyOrders";
+import EditBook from "./SellBook/EditBook";
 import Address from "./SettingPage/Address";
 import RazorPay from "./SettingPage/RazorPay";
 import Refund from "./SettingPage/Refund";
@@ -46,6 +47,7 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       <Stack.Screen name="Address" component={Address} />
       <Stack.Screen name="RazorPay" component={RazorPay} />
       <Stack.Screen name="Refund" component={Refund} />
+      <Stack.Screen name="EditBook" component={EditBook} />
     </Stack.Navigator>
   );
 }

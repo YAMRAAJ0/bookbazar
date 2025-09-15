@@ -1,4 +1,3 @@
-// Hero.tsx
 import { useRef, useState, useEffect } from "react";
 import { View, Text, ImageBackground, TouchableOpacity, ScrollView, FlatList, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,21 +17,24 @@ const HomeHero = () => {
 
   const navigation = useNavigation();
 
-  // Auto slide effect
+  // ✅ Auto slide effect (fixed)
   useEffect(() => {
     const timer = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % images.length;
-      setCurrentIndex(nextIndex);
-      flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % images.length;
+        flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+        return nextIndex;
+      });
     }, 4000); // every 4 seconds
+
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {/* Slider with Text Overlay */}
-        <View className="w-full h-64 mt-2  overflow-hidden">
+        <View className="w-full h-64 mt-2 overflow-hidden">
           <FlatList
             ref={flatListRef}
             data={images}
@@ -48,7 +50,7 @@ const HomeHero = () => {
             )}
           />
 
-          {/* Dark Overlay for better text visibility */}
+          {/* Dark Overlay */}
           <View className="absolute inset-0 bg-black/50" />
 
           {/* Overlay Content */}
@@ -61,15 +63,17 @@ const HomeHero = () => {
               share the stories that matter.
             </Text>
             <View className="flex-row space-x-4">
-              <TouchableOpacity onPress={() => navigation.navigate("Sell" as never)} className="bg-orange-700 px-4 py-2 rounded-full">
-                <Text className="text-white font-semibold">
-                  + Sell Your Books
-                </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Sell" as never)}
+                className="bg-orange-700 px-4 py-2 rounded-full"
+              >
+                <Text className="text-white font-semibold">+ Sell Your Books</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate("Donate" as never)} className="bg-white px-4 py-2 rounded-full">
-                <Text className="text-gray-800 font-semibold">
-                  Donate Your Books
-                </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Donate" as never)}
+                className="bg-white px-4 py-2 rounded-full"
+              >
+                <Text className="text-gray-800 font-semibold">Donate Your Books</Text>
               </TouchableOpacity>
             </View>
           </View>

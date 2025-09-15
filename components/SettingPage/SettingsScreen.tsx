@@ -1,5 +1,5 @@
 // screens/SettingsScreen.tsx
-import React, { useState } from "react";
+import  { useState } from "react";
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   Switch,
   Alert,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function SettingsScreen({ navigation }: any) {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);

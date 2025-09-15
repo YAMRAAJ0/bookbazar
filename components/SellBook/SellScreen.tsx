@@ -1,7 +1,8 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
-const books = [
+const initialBooks = [
   {
     id: "1",
     title: "The Great Gatsby",
@@ -26,10 +27,31 @@ const books = [
 ];
 
 const SellScreen = ({ navigation }: any) => {
+  const [books, setBooks] = useState(initialBooks);
+
+  const handleDelete = (id: string) => {
+    Alert.alert(
+      "Delete Book",
+      "Are you sure you want to delete this book?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: () => {
+            setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View className="flex-1 bg-white px-4 py-6">
       {/* Header */}
-      <Text className="text-2xl font-bold text-orange-700 mb-4">📚 My Books for Sale</Text>
+      <Text className="text-2xl font-bold text-orange-700 mb-4">
+        📚 My Books for Sale
+      </Text>
 
       {/* Empty State */}
       {books.length === 0 ? (
@@ -59,10 +81,17 @@ const SellScreen = ({ navigation }: any) => {
 
                 {/* Actions */}
                 <View className="flex-row mt-2">
-                  <TouchableOpacity className="bg-orange-100 px-3 py-1 rounded-lg mr-2">
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("EditBook", { book: item })}
+                    className="bg-orange-100 px-3 py-1 rounded-lg mr-2"
+                  >
                     <Text className="text-orange-600 text-sm font-medium">Edit</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity className="bg-red-100 px-3 py-1 rounded-lg">
+
+                  <TouchableOpacity
+                    onPress={() => handleDelete(item.id)}
+                    className="bg-red-100 px-3 py-1 rounded-lg"
+                  >
                     <Text className="text-red-600 text-sm font-medium">Delete</Text>
                   </TouchableOpacity>
                 </View>
@@ -73,7 +102,10 @@ const SellScreen = ({ navigation }: any) => {
       )}
 
       {/* Add Book Button */}
-      <TouchableOpacity onPress={() => navigation.navigate("AddBook")} className="bg-orange-600 py-4 rounded-xl mt-6 items-center">
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AddBook")}
+        className="bg-orange-600 py-4 rounded-xl mt-6 items-center"
+      >
         <Text className="text-white text-lg font-semibold">+ Add New Book</Text>
       </TouchableOpacity>
     </View>
@@ -81,7 +113,3 @@ const SellScreen = ({ navigation }: any) => {
 };
 
 export default SellScreen;
-
-
-
-

@@ -1,5 +1,5 @@
 //RegisterScreen.tsx
-import React, { useState } from "react";
+import  { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, ImageBackground } from "react-native";
 import { saveUser, getUsers } from "./storage";
 import { Picker } from "@react-native-picker/picker";

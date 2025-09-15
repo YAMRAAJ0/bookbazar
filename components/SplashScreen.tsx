@@ -1,12 +1,12 @@
 // SplashScreen.tsx
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "react-native";
 
 export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onFinish(); 
-    }, 500); // 1.5 seconds
+    }, 100); // 1.5 seconds
 
     return () => clearTimeout(timer);
   }, []);
