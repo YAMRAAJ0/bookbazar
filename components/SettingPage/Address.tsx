@@ -42,6 +42,7 @@ export default function Address() {
             value={name}
             onChangeText={setName}
             placeholder="Enter your name"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg p-3"
           />
         </View>
@@ -52,6 +53,7 @@ export default function Address() {
             value={phone}
             onChangeText={setPhone}
             placeholder="Enter phone number"
+            placeholderTextColor="black"
             keyboardType="phone-pad"
             className="border border-gray-300 rounded-lg p-3"
           />
@@ -63,6 +65,7 @@ export default function Address() {
             value={street}
             onChangeText={setStreet}
             placeholder="Enter street address"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg p-3"
           />
         </View>
@@ -73,6 +76,7 @@ export default function Address() {
             value={city}
             onChangeText={setCity}
             placeholder="Enter city"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg p-3"
           />
         </View>
@@ -83,6 +87,7 @@ export default function Address() {
             value={pincode}
             onChangeText={setPincode}
             placeholder="Enter pincode"
+            placeholderTextColor="black"
             keyboardType="numeric"
             className="border border-gray-300 rounded-lg p-3"
           />

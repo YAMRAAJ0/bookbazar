@@ -33,6 +33,7 @@ export default function EditProfile() {
             value={name}
             onChangeText={setName}
             placeholder="Enter your name"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg p-3"
           />
         </View>
@@ -43,6 +44,7 @@ export default function EditProfile() {
             value={email}
             onChangeText={setEmail}
             placeholder="Enter your email"
+            placeholderTextColor="black"
             keyboardType="email-address"
             className="border border-gray-300 rounded-lg p-3"
           />
@@ -54,6 +56,7 @@ export default function EditProfile() {
             value={phone}
             onChangeText={setPhone}
             placeholder="Enter phone number"
+            placeholderTextColor="black"
             keyboardType="phone-pad"
             className="border border-gray-300 rounded-lg p-3"
           />
@@ -65,6 +68,7 @@ export default function EditProfile() {
             value={password}
             onChangeText={setPassword}
             placeholder="Enter new password"
+            placeholderTextColor="black"
             secureTextEntry
             className="border border-gray-300 rounded-lg p-3"
           />

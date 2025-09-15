@@ -45,11 +45,11 @@ export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () =
             <View className="bg-white text-black rounded-2xl p-6 shadow-lg">
               <Text className="text-2xl font-bold text-orange-700 text-center mb-6">BookMarket</Text>
               <Text className="text-gray-600 text-sm mb-2">Enter your email address</Text>
-              <TextInput placeholder="Enter Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
+              <TextInput placeholder="Enter Email" placeholderTextColor="black" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
              
               <Text className="text-gray-600 text-sm mb-2">Enter your password</Text>           
               <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
-              <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="flex-1 py-3" secureTextEntry={!showPassword} />
+              <TextInput placeholder="Enter Password" placeholderTextColor="black" value={password} onChangeText={setPassword} className="flex-1 py-3" secureTextEntry={!showPassword} />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Ionicons
                   name={showPassword ? "eye-off" : "eye"}

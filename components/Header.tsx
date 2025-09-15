@@ -43,6 +43,7 @@ const Header = () => {
           
         <TextInput
             placeholder="Search books, authors, genres..."
+            placeholderTextColor="black"
             value={searchQuery}
             onChangeText={setSearchQuery} 
             onSubmitEditing={handleSearch}

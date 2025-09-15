@@ -61,12 +61,12 @@ const DonateBook = () => {
       <Text className="text-2xl font-bold text-orange-700 mb-6">📖 Donate a Book</Text>
 
       {/* Book Details */}
-      <TextInput placeholder="Book Title" value={title} onChangeText={setTitle} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Author" value={author} onChangeText={setAuthor} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Publisher" value={publisher} onChangeText={setPublisher} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Edition / Year" value={edition} onChangeText={setEdition} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Genre / Category" value={genre} onChangeText={setGenre} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Language" value={language} onChangeText={setLanguage} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Book Title" placeholderTextColor="black" value={title} onChangeText={setTitle} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Author" placeholderTextColor="black" value={author} onChangeText={setAuthor} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Publisher" placeholderTextColor="black" value={publisher} onChangeText={setPublisher} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Edition / Year" placeholderTextColor="black" value={edition} onChangeText={setEdition} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Genre / Category" placeholderTextColor="black" value={genre} onChangeText={setGenre} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Language" placeholderTextColor="black" value={language} onChangeText={setLanguage} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
 
       {/* Condition */}
       <Text className="text-gray-700 font-semibold mb-2">Book Condition</Text>
@@ -90,10 +90,10 @@ const DonateBook = () => {
       {coverImage && <Image source={{ uri: coverImage }} className="w-32 h-48 rounded-lg mb-4" />}
 
       {/* Quantity */}
-      <TextInput placeholder="Quantity" value={quantity} onChangeText={setQuantity} keyboardType="numeric" className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Quantity" placeholderTextColor="black" value={quantity} onChangeText={setQuantity} keyboardType="numeric" className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
 
       {/* Location */}
-      <TextInput placeholder="Pickup Location / Pincode" value={location} onChangeText={setLocation} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Pickup Location / Pincode" placeholderTextColor="black" value={location} onChangeText={setLocation} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
 
       {/* Delivery Options */}
       <Text className="text-gray-700 font-semibold mb-2">Delivery Options</Text>
@@ -126,6 +126,7 @@ const DonateBook = () => {
       {/* Notes */}
       <TextInput
         placeholder="Additional Notes (e.g. 'For school kids')"
+        placeholderTextColor="black"
         value={notes}
         onChangeText={setNotes}
         multiline

@@ -43,16 +43,16 @@ const SellBookScreen = () => {
       <Text className="text-2xl font-bold text-orange-700 mb-4">📖 Sell a Book</Text>
 
       {/* Book Details */}
-      <TextInput placeholder="Book Title *" value={title} onChangeText={setTitle} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Author *" value={author} onChangeText={setAuthor} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Publisher" value={publisher} onChangeText={setPublisher} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Edition / Year of Publication" value={year} onChangeText={setYear} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Genre / Category" value={genre} onChangeText={setGenre} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Language" value={language} onChangeText={setLanguage} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Book Title *" placeholderTextColor="black" value={title} onChangeText={setTitle} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Author *" placeholderTextColor="black" value={author} onChangeText={setAuthor} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Publisher" placeholderTextColor="black" value={publisher} onChangeText={setPublisher} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Edition / Year of Publication" placeholderTextColor="black" value={year} onChangeText={setYear} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Genre / Category" placeholderTextColor="black" value={genre} onChangeText={setGenre} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Language" placeholderTextColor="black" value={language} onChangeText={setLanguage} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
 
       {/* Condition */}
-      <TextInput placeholder="Condition (New / Good / Fair / Old)" value={condition} onChangeText={setCondition} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
-      <TextInput placeholder="Notes (damages, highlights, etc.)" value={notes} onChangeText={setNotes} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" multiline />
+      <TextInput placeholder="Condition (New / Good / Fair / Old)" placeholderTextColor="black" value={condition} onChangeText={setCondition} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Notes (damages, highlights, etc.)" placeholderTextColor="black" value={notes} onChangeText={setNotes} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" multiline />
 
       {/* Images */}
       <TouchableOpacity onPress={pickImage} className="bg-orange-100 py-3 rounded-lg mb-4 items-center">
@@ -65,8 +65,8 @@ const SellBookScreen = () => {
       </View>
 
       {/* Pricing */}
-      <TextInput placeholder="Selling Price *" value={sellingPrice} onChangeText={setSellingPrice} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
-      <TextInput placeholder="Original Price (optional)" value={originalPrice} onChangeText={setOriginalPrice} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
+      <TextInput placeholder="Selling Price *" placeholderTextColor="black" value={sellingPrice} onChangeText={setSellingPrice} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
+      <TextInput placeholder="Original Price (optional)" placeholderTextColor="black" value={originalPrice} onChangeText={setOriginalPrice} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
 
       <TouchableOpacity
         onPress={() => setNegotiable(!negotiable)}
@@ -76,13 +76,13 @@ const SellBookScreen = () => {
       </TouchableOpacity>
 
       {/* Availability */}
-      <TextInput placeholder="Quantity" value={quantity} onChangeText={setQuantity} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
+      <TextInput placeholder="Quantity" placeholderTextColor="black" value={quantity} onChangeText={setQuantity} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="numeric" />
 
       {/* Seller Info */}
-      <TextInput placeholder="Location (City / Pincode)" value={location} onChangeText={setLocation} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
+      <TextInput placeholder="Location (City / Pincode)" placeholderTextColor="black" value={location} onChangeText={setLocation} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" />
 
       {/* Additional Notes */}
-      <TextInput placeholder="Additional Notes" value={extraNotes} onChangeText={setExtraNotes} className="border border-gray-300 rounded-lg px-4 py-3 mb-6" multiline />
+      <TextInput placeholder="Additional Notes" placeholderTextColor="black" value={extraNotes} onChangeText={setExtraNotes} className="border border-gray-300 rounded-lg px-4 py-3 mb-6" multiline />
 
       {/* Submit */}
       <View className=" pb-16">

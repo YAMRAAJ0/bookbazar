@@ -50,12 +50,14 @@ const CheckoutScreen = () => {
       <Text className="text-lg font-semibold mb-2">Delivery Details</Text>
       <TextInput
         placeholder="Full Name"
+        placeholderTextColor="black"
         value={name}
         onChangeText={setName}
         className="border border-gray-300 rounded-lg px-3 py-2 mb-3"
       />
       <TextInput
         placeholder="Mobile Number"
+        placeholderTextColor="black"
         keyboardType="phone-pad"
         value={mobile}
         onChangeText={setMobile}
@@ -63,6 +65,7 @@ const CheckoutScreen = () => {
       />
       <TextInput
         placeholder="Full Address"
+        placeholderTextColor="black"
         value={address}
         onChangeText={setAddress}
         className="border border-gray-300 rounded-lg px-3 py-2 mb-3"
@@ -70,6 +73,7 @@ const CheckoutScreen = () => {
       />
       <TextInput
         placeholder="Pincode"
+        placeholderTextColor="black"
         keyboardType="number-pad"
         value={pincode}
         onChangeText={setPincode}

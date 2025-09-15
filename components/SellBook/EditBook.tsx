@@ -29,6 +29,7 @@ export default function EditBook() {
         onChangeText={setTitle}
         className="border border-gray-300 rounded-lg p-3 mb-4"
         placeholder="Enter book title"
+        placeholderTextColor="black"
       />
 
       <Text className="text-gray-700 mb-1">Author</Text>
@@ -37,6 +38,7 @@ export default function EditBook() {
         onChangeText={setAuthor}
         className="border border-gray-300 rounded-lg p-3 mb-4"
         placeholder="Enter author name"
+        placeholderTextColor="black"
       />
 
       <Text className="text-gray-700 mb-1">Price</Text>
@@ -45,6 +47,7 @@ export default function EditBook() {
         onChangeText={setPrice}
         className="border border-gray-300 rounded-lg p-3 mb-6"
         placeholder="Enter price"
+        placeholderTextColor="black"
         keyboardType="numeric"
       />
 

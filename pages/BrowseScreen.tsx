@@ -56,6 +56,7 @@ export default function BrowseScreen() {
         <Text className="text-2xl font-bold text-orange-700">Browse Books</Text>
         {/* <TextInput
           placeholder="Search books, authors..."
+          placeholderTextColor="black"
           value={searchQuery} // 🔹 controlled by context
           editable={false}   // optional: prevent editing here
           className="bg-gray-100 mt-3 px-4 py-2 rounded-full"

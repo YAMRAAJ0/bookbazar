@@ -97,6 +97,7 @@ export default function RegisterScreen({
           <Text className="text-gray-600 text-sm mb-2">Enter your full name</Text>
           <TextInput
             placeholder="Full Name"
+            placeholderTextColor="black"
             value={name}
             onChangeText={setName}
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
@@ -104,6 +105,7 @@ export default function RegisterScreen({
           <Text className="text-gray-600 text-sm mb-2">Enter your email address</Text>
           <TextInput
             placeholder="Email"
+            placeholderTextColor="black"
             value={email}
             onChangeText={setEmail}
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
@@ -112,6 +114,7 @@ export default function RegisterScreen({
           <Text className="text-gray-600 text-sm mb-2">Enter your mobile number</Text>
           <TextInput
             placeholder="Mobile Number"
+            placeholderTextColor="black"
             value={mobile}
             onChangeText={setMobile}
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
@@ -135,7 +138,8 @@ export default function RegisterScreen({
           <View className="flex-row items-center mb-6">
             <TextInput
               placeholder="Enter OTP"
-              value={otp}
+              placeholderTextColor="black"
+                value={otp}
               onChangeText={setOtp}
               className="flex-1 border border-gray-300 rounded-lg px-4 py-3 mr-2"
               keyboardType="numeric"
@@ -154,6 +158,7 @@ export default function RegisterScreen({
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
             <TextInput
               placeholder="Password"
+              placeholderTextColor="black"  
               value={password}
               onChangeText={setPassword}
               className="flex-1 py-3"
@@ -172,6 +177,7 @@ export default function RegisterScreen({
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
             <TextInput
               placeholder="Confirm Password"
+              placeholderTextColor="black"    
               value={confirmPassword}
               onChangeText={setConfirmPassword}
               className="flex-1 py-3"

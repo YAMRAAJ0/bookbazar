@@ -34,12 +34,14 @@ export default function Refund() {
             value={accountNumber}
             onChangeText={setAccountNumber}
             placeholder="Account Number"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg px-3 py-2 mb-3"
           />
           <TextInput
             value={ifsc}
             onChangeText={setIfsc}
             placeholder="IFSC Code"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg px-3 py-2"
           />
         </View>
@@ -66,6 +68,7 @@ export default function Refund() {
             value={upiId}
             onChangeText={setUpiId}
             placeholder="Enter UPI ID"
+            placeholderTextColor="black"
             className="border border-gray-300 rounded-lg px-3 py-2"
           />
         </View>
