@@ -41,17 +41,14 @@ export default function LoginScreen({ onLogin, onRegisterPage }: { onLogin: () =
         <ImageBackground source={{ uri: "https://images.unsplash.com/photo-1508780709619-79562169bc64" }} className="flex-1" resizeMode="cover">
           <View className="absolute inset-0 bg-purple-900/70" />
           <View className="flex-1 justify-center px-8">
-            {/* <View className="items-center mb-8">
-              <Image source={{ uri: "https://img.icons8.com/color/96/000000/react-native.png" }} className="w-20 h-20 mb-3" />
-              <Text className="text-2xl font-bold text-orange-700">BookMarket</Text>
-            </View> */}
-
+          
             <View className="bg-white text-black rounded-2xl p-6 shadow-lg">
               <Text className="text-2xl font-bold text-orange-700 text-center mb-6">BookMarket</Text>
-
+              <Text className="text-gray-600 text-sm mb-2">Enter your email address</Text>
               <TextInput placeholder="Enter Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-lg px-4 py-3 mb-4" keyboardType="email-address" />
-               <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
-           
+             
+              <Text className="text-gray-600 text-sm mb-2">Enter your password</Text>           
+              <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
               <TextInput placeholder="Enter Password" value={password} onChangeText={setPassword} className="flex-1 py-3" secureTextEntry={!showPassword} />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Ionicons

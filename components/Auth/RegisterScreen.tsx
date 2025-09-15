@@ -1,3 +1,4 @@
+//RegisterScreen.tsx
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, ImageBackground } from "react-native";
 import { saveUser, getUsers } from "./storage";
@@ -6,7 +7,13 @@ import * as Notifications from "expo-notifications";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 
-export default function RegisterScreen({ onRegister }: { onRegister: () => void }) {
+export default function RegisterScreen({
+  onRegister,
+  onLoginPage,
+}: {
+  onRegister: () => void;
+  onLoginPage: () => void;
+}) {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -87,12 +94,14 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
             Create Account
           </Text>
 
+          <Text className="text-gray-600 text-sm mb-2">Enter your full name</Text>
           <TextInput
             placeholder="Full Name"
             value={name}
             onChangeText={setName}
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
           />
+          <Text className="text-gray-600 text-sm mb-2">Enter your email address</Text>
           <TextInput
             placeholder="Email"
             value={email}
@@ -100,6 +109,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
             keyboardType="email-address"
           />
+          <Text className="text-gray-600 text-sm mb-2">Enter your mobile number</Text>
           <TextInput
             placeholder="Mobile Number"
             value={mobile}
@@ -107,7 +117,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
             className="border border-gray-300 rounded-lg px-4 py-3 mb-4"
             keyboardType="phone-pad"
           />
-
+          <Text className="text-gray-600 text-sm mb-2">Select your gender</Text>
           <View className="border border-gray-300 rounded-lg mb-4">
             <Picker
               selectedValue={gender}
@@ -120,7 +130,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
               <Picker.Item label="Other" value="Other" />
             </Picker>
           </View>
-
+          <Text className="text-gray-600 text-sm mb-2">Enter your OTP</Text> 
           {/* OTP Input + Generate Button */}
           <View className="flex-row items-center mb-6">
             <TextInput
@@ -138,6 +148,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
               <Text className="text-white font-semibold">Generate OTP</Text>
             </TouchableOpacity>
           </View>
+          <Text className="text-gray-600 text-sm mb-2">Enter your password</Text> 
 
                 {/* Password Field with Eye Button */}
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
@@ -156,7 +167,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
               />
             </TouchableOpacity>
           </View>
-
+          <Text className="text-gray-600 text-sm mb-2">Enter your confirm password</Text> 
           {/* Confirm Password Field with Eye Button */}
           <View className="flex-row items-center border border-gray-300 rounded-lg px-4 mb-6">
             <TextInput
@@ -174,7 +185,7 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
               />
             </TouchableOpacity>
           </View>
-
+     
 
           <TouchableOpacity
             onPress={handleRegister}
@@ -182,7 +193,12 @@ export default function RegisterScreen({ onRegister }: { onRegister: () => void 
           >
             <Text className="text-white font-semibold text-lg">Register</Text>
           </TouchableOpacity>
-          
+          <TouchableOpacity onPress={onLoginPage} className="items-center mt-4">
+  <Text className="text-orange-700 font-semibold">
+    Already have an account? Sign In
+  </Text>
+</TouchableOpacity>
+
         </View>
       </ScrollView>
     </ImageBackground>

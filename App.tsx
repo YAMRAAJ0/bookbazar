@@ -78,7 +78,11 @@ export default function App() {
             <WelcomeConsentScreen onContinue={() => setHasSeenWelcome(true)} />
           ) : showRegister ? (
             // Show registration if user clicks register
-            <RegisterScreen onRegister={() => setShowRegister(false)} />
+            <RegisterScreen 
+            onRegister={() => setShowRegister(false)} 
+            onLoginPage={() => setShowRegister(false)} 
+          />
+          
           ) : (
             // Show login screen
             <LoginScreen
