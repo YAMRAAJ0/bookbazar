@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useCart } from "../context/CartContext";
 
 export default function CartScreen() {
-  const { cart, updateQty, removeFromCart } = useCart(); // ✅ Added removeItem
+  const { cart, updateQty, removeFromCart } = useCart();  
 
   const total = cart
   .reduce((sum, item) => sum + Number(item.price) * item.qty, 0)
@@ -40,8 +40,8 @@ export default function CartScreen() {
 
               {/* Rating */}
               <Text className="text-yellow-500 text-sm mt-1">
-                {"★".repeat(Math.floor(item.rating))}
-                {"☆".repeat(5 - Math.floor(item.rating))}
+                {"★".repeat(Math.floor(item.rating || 0))}
+                {"☆".repeat(5 - Math.floor(item.rating || 0))}
               </Text>
 
               {/* Quantity Controls */}

@@ -25,12 +25,12 @@ export default function SettingsScreen({ navigation }: any) {
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">👤 Profile Settings</Text>
 
-        <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
+        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")} className="flex-row items-center py-3 border-b border-gray-200">
           <Ionicons name="person-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Edit Profile</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="flex-row items-center py-3">
+        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")} className="flex-row items-center py-3">
           <Ionicons name="lock-closed-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Change Password</Text>
         </TouchableOpacity>
@@ -40,7 +40,7 @@ export default function SettingsScreen({ navigation }: any) {
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">📍 Address & Location</Text>
 
-        <TouchableOpacity className="flex-row items-center py-3">
+        <TouchableOpacity onPress={() => navigation.navigate("Address")} className="flex-row items-center py-3">
           <Ionicons name="location-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Manage Saved Addresses</Text>
         </TouchableOpacity>
@@ -65,52 +65,29 @@ export default function SettingsScreen({ navigation }: any) {
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">💳 Payment Settings</Text>
 
-        <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
+        <TouchableOpacity onPress={() => navigation.navigate("RazorPay")} className="flex-row items-center py-3 border-b border-gray-200">
           <Ionicons name="card-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">RazorPay / COD</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="flex-row items-center py-3">
+        <TouchableOpacity onPress={() => navigation.navigate("Refund")} className="flex-row items-center py-3">
           <Ionicons name="cash-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Refund & Payout Preferences</Text>
         </TouchableOpacity>
       </View>
 
-      {/* App Preferences */}
-      <View className="bg-white rounded-2xl p-4 mb-4 shadow">
-        <Text className="text-lg font-semibold mb-2">⚡ App Preferences</Text>
-
-        {/* Language Selection */}
-        <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
-          <Ionicons name="language-outline" size={22} color="#f97316" />
-          <Text className="ml-3 text-gray-700">Language Selection</Text>
-        </TouchableOpacity>
-
-        {/* Dark Mode */}
-        <View className="flex-row justify-between items-center py-3">
-          <View className="flex-row items-center">
-            <Ionicons name="moon-outline" size={22} color="#f97316" />
-            <Text className="ml-3 text-gray-700">Dark Mode</Text>
-          </View>
-          <Switch
-            value={darkMode}
-            onValueChange={setDarkMode}
-            trackColor={{ false: "#d1d5db", true: "#f97316" }}
-            thumbColor={darkMode ? "#fff" : "#f4f4f5"}
-          />
-        </View>
-      </View>
+    
 
       {/* Help & Support */}
       <View className="bg-white rounded-2xl p-4 mb-4 shadow">
         <Text className="text-lg font-semibold mb-2">🛟 Help & Support</Text>
 
-        <TouchableOpacity className="flex-row items-center py-3 border-b border-gray-200">
+        <TouchableOpacity onPress={() => navigation.navigate("HelpCenter")} className="flex-row items-center py-3 border-b border-gray-200">
           <Ionicons name="help-circle-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">FAQs</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="flex-row items-center py-3">
+        <TouchableOpacity onPress={() => navigation.navigate("HelpCenter")} className="flex-row items-center py-3">
           <Ionicons name="mail-outline" size={22} color="#f97316" />
           <Text className="ml-3 text-gray-700">Contact Support</Text>
         </TouchableOpacity>

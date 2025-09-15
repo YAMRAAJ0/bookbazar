@@ -13,7 +13,11 @@ import ProfileScreen from "../pages/ProfileScreen";
 import SettingsScreen from "./SettingPage/SettingsScreen";
 import HelpCenterScreen from "./HelpCenterScreen";
 import BrowseScreen from "../pages/BrowseScreen";
+import EditProfile from "./SettingPage/EditPrpfile";  
 import MyOrders from "./MyOrders";
+import Address from "./SettingPage/Address";
+import RazorPay from "./SettingPage/RazorPay";
+import Refund from "./SettingPage/Refund";
 import '../global.css';
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +42,10 @@ export default function AppNavigator({ onLogout }: { onLogout: () => void }) {
       </Stack.Screen>
       <Stack.Screen name="HelpCenter" component={HelpCenterScreen} />
       <Stack.Screen name="MyOrders" component={MyOrders} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen name="Address" component={Address} />
+      <Stack.Screen name="RazorPay" component={RazorPay} />
+      <Stack.Screen name="Refund" component={Refund} />
     </Stack.Navigator>
   );
 }
