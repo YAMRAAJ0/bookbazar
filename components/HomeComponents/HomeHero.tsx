@@ -1,5 +1,15 @@
 import { useRef, useState, useEffect } from "react";
-import { View, Text, ImageBackground, TouchableOpacity, ScrollView, FlatList, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+  Dimensions,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,23 +27,27 @@ const HomeHero = () => {
 
   const navigation = useNavigation();
 
-  // ✅ Auto slide effect (fixed)
+  // ✅ Auto slide effect
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % images.length;
-        flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
-        return nextIndex;
-      });
-    }, 4000); // every 4 seconds
+      let nextIndex = (currentIndex + 1) % images.length;
+      flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+      setCurrentIndex(nextIndex);
+    }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [currentIndex]);
+
+  // ✅ Update index on manual swipe
+  const onMomentumScrollEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetX = e.nativeEvent.contentOffset.x;
+    const index = Math.round(offsetX / width);
+    setCurrentIndex(index);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        {/* Slider with Text Overlay */}
         <View className="w-full h-64 mt-2 overflow-hidden">
           <FlatList
             ref={flatListRef}
@@ -45,9 +59,15 @@ const HomeHero = () => {
             renderItem={({ item }) => (
               <ImageBackground
                 source={{ uri: item }}
-                className="w-screen h-64 justify-center px-6"
+                style={{ width, height: 256 }} // force width to screen
               />
             )}
+            getItemLayout={(_, index) => ({
+              length: width,
+              offset: width * index,
+              index,
+            })}
+            onMomentumScrollEnd={onMomentumScrollEnd} // ✅ manual swipe support
           />
 
           {/* Dark Overlay */}
@@ -83,9 +103,14 @@ const HomeHero = () => {
             {images.map((_, index) => (
               <View
                 key={index}
-                className={`w-2.5 h-2.5 rounded-full ${
-                  index === currentIndex ? "bg-orange-700" : "bg-white/50"
-                }`}
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 3,
+                  backgroundColor:
+                    index === currentIndex ? "#C2410C" : "rgba(255,255,255,0.5)",
+                }}
               />
             ))}
           </View>

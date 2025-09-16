@@ -63,7 +63,7 @@ const BuyPage = () => {
   keyExtractor={(_, index) => index.toString()}
   renderItem={({ item }) => (
     <Image
-      source={{ uri: item }} // must be a valid URL
+      source={{ uri: item }} 
       style={{ width, height: IMAGE_HEIGHT }}
       resizeMode="cover"
     />
