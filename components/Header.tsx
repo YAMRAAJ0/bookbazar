@@ -5,7 +5,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useWishlist } from "../context/WishlistContext";
 import { useNotifications } from "../context/NotificationContext";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
 import { useSearch } from "../context/SearchContext";
 import { useCart } from "../context/CartContext";
 

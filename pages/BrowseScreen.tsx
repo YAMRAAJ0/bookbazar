@@ -5,11 +5,18 @@ import { useWishlist } from "../context/WishlistContext";
 import { useState, useMemo } from "react";
 import Category from "../components/HomeComponents/Category";
 import { useSearch } from "../context/SearchContext";
+import { RootStackParamList } from "./types"; 
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+type BrowseScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "BrowseScreen"
+>;
 
 export default function BrowseScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<BrowseScreenNavigationProp>();
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const { searchQuery } = useSearch(); // ✅ global search
+  const { searchQuery } = useSearch(); 
 
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filters, setFilters] = useState({
@@ -54,13 +61,6 @@ export default function BrowseScreen() {
     <View className="flex-1 bg-white">
       <View className="p-4 bg-orange-50">
         <Text className="text-2xl font-bold text-orange-700">Browse Books</Text>
-        {/* <TextInput
-          placeholder="Search books, authors..."
-          placeholderTextColor="black"
-          value={searchQuery} // 🔹 controlled by context
-          editable={false}   // optional: prevent editing here
-          className="bg-gray-100 mt-3 px-4 py-2 rounded-full"
-        /> */}
       </View>
 
       <Category selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setFilters={setFilters} />
