@@ -8,11 +8,11 @@ import { useCart } from "../../context/CartContext"; // ✅ Import context
 const TabBarHeight = 70;
 
 export default function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-  const { cartCount } = useCart(); // ✅ Get cart count from context
+  const { cartCount } = useCart(); 
 
   return (
     <View style={{ backgroundColor: "transparent" }}>
-      {/* SVG Curve */}
+
       <View style={{ position: "absolute", bottom: 0, width: "100%", height: TabBarHeight }}>
         <Svg width="100%" height={TabBarHeight} viewBox="0 0 100 100">
           <Path
@@ -22,7 +22,6 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
         </Svg>
       </View>
 
-      {/* Tab Buttons */}
       <View
         style={{
           flexDirection: "row",
@@ -59,12 +58,12 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
                 })
               : options.tabBarLabel ?? route.name;
 
-          // Floating middle button
           if (route.name === "Sell") {
             return (
               <TouchableOpacity
                 key={route.name}
                 onPress={onPress}
+                activeOpacity={1}
                 style={{
                   top: -30,
                   width: 70,
@@ -85,7 +84,6 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
             );
           }
 
-          // Regular tab icons
           let iconName: keyof typeof Ionicons.glyphMap = "ellipse";
           if (route.name === "Home") iconName = "home-outline";
           if (route.name === "Browse") iconName = "book-outline";
@@ -97,6 +95,7 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
               key={route.name}
               onPress={onPress}
               style={{ alignItems: "center", flex: 1 }}
+              activeOpacity={1}
             >
               <View>
                 <Ionicons
@@ -104,7 +103,6 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
                   size={24}
                   color={isFocused ? "#c2410c" : "black"}
                 />
-                {/* Cart badge */}
                 {route.name === "Cart" && cartCount > 0 && (
                   <View
                     style={{
